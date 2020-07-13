@@ -62,12 +62,12 @@ body{
 	border-color: transparent;
 }
 .nav-link{
-	color: #052f17 !important;
+	color: #007bff !important;
 	font-weight: 500;
     transition: all 200ms linear;
 }
 .nav-item:hover .nav-link{
-	color: #052f17 !important;
+	color: #007bff !important;
 }
 .nav-item.active .nav-link{
 	color: #777 !important;
@@ -84,7 +84,7 @@ body{
 	width: 100%;
 	height: 2px;
 	content: '';
-	background-color: #777;
+	background-color: #007bff;
 	opacity: 0;
     transition: all 200ms linear;
 }
@@ -115,6 +115,19 @@ body{
 .text-color{
 	color: #333333;
 }
+
+.icon-color{
+	color: #007bff;
+}
+
+i.features{
+	display: inline-block;
+	border-radius: 50%;
+	padding: 0.5em 0.7em;
+	border: 1px solid #007bff;
+	color: #007bff;
+  
+  }
 
 
 /* Home Page */
