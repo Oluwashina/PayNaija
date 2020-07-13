@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Naija - Admin Panel</title>
+    <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
+    <!-- Import Google font and icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="flashjs-master/dist/flash.min.css" rel="stylesheet">
+</head>
+<body>
+          
+          <div class="container">
+
+            
+            <div class="flash-container">
+              <div class="flash-message"></div>
+            </div>
+
+            <div style="margin-top: 50px;" class="text-center">
+                <img src="img/PayNaija.png" class="" alt="logo" width="100" height="50" />
+              </div>
+
+            <div class="row justify-content-center" style="margin-top: 50px;">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="card">
+						<div class="card-body">
+                            <h5 class="card-title text-center">Administrator Login</h5>
+                            <form>
+      
+                                <div class="form-group">
+                                  <label for="username">Username</label>
+                                  <input type="text" class="form-control" id="username" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-group mb-2" id="show_hide_password">
+                                        <input type="password" class="form-control" id="password">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                            </div>
+                                          </div>
+                                      </div>
+                                </div>
+                              
+                              <button type="submit" class="btn btn-primary mt-2" style="width: 100%;" >Sign In <span id="spinner"></span></button>
+              
+                              <div class="text-right" style="margin-top: 10px;">
+                                <a href="admin_changepassword.html" style="text-decoration: none;" class="text-color">Change password?</a>
+                              </div>
+                                
+                            </form>
+						</div>
+					  </div>
+                </div>
+            </div>
+
+
+          </div>
+
+        
+
+    
+
+
+
+
+
+
+
+
+<script src="dist/jquery.min.js"></script>
+<script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+<script src="lib/viewdata.js"></script>
+<script src="lib/jquery.cookie.js"></script>
+<script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+ <!-- Forms Validations Plugin -->
+ <script src="/assets/js/plugins/jquery.validate.min.js"></script>
+ <script src="iziToast-master/dist/js/iziToast.min.js"></script>
+ <script src="flashjs-master/dist/flash.min.js"></script>
+ <script src="flashjs-master/dist/flash.jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+        $("#show_hide_password a").on('click', function(event) {
+             event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+
+      $("form").submit(function(event) {
+
+        event.preventDefault();
+        var view_data = new ViewData();
+        var login_function = "authenticateuser/admin";
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var url = view_data.ControllerRouteURL + login_function;
+
+        var data={
+          username: username,
+          password: password
+        }
+
+        $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                url: url,
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+            beforeSend: function(jqXHR, settings) {
+                $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
+            },
+            success: function(data) {
+               console.log(data)
+                view_data.storeUserDetails("token", data["token"]);
+                // window.location.replace("dashboard.html");
+            },
+            error: function(data){
+                $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
+                $('.flash-message').flashjs({
+                        timeout: 2000,
+                        progress: true,
+                    });
+                $('.flash-message').text('Invalid Credentials')
+                
+            },
+            complete: function(jqXHR) {
+                if (jqXHR.status != '200') {
+                    var obj = $.parseJSON(jqXHR.responseText);
+                }
+                $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
+            }
+        });
+
+});
+
+    })
+      
+  </script>  
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Naija - Home</title>
+    <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
+      <!-- Import Google font and icons -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css">
+      <link href="style.css" rel="stylesheet">
+      <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation bar -->
+    <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="home.html"><img src="img/PayNaija.png" alt="logo" width="100" height="50" /></a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="transfer.html">Transfer</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="contact.html">Contact</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="logout.html">Logout</a>
+								</li>
+							</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+        </div>
+
+    </div>
+
+    
+        <!-- main page design layout -->
+        <div class="container" style="margin-top: 130px;">
+            <h4 class="text-center">Borderless Payment With Ease</h4>
+
+            <div class="row mt-5">
+                <div class="col-sm-12 col-lg-4 mb-4">
+                    <div class="card card-home">
+                        <div class="card-body">
+                            <h5 class="card-title text-center mt-4">Secure</h5>
+                         <p class="card-text text-center">All your informations submitted are securely processed.</p>
+                        </div>
+                      </div>
+                </div>
+
+                <!-- second column -->
+                <div class="col-sm-12 col-lg-4 mb-4">
+                    <div class="card card-home">
+                        <div class="card-body">
+                         <h5 class="card-title text-center mt-4">Ease</h5>
+                            <p class="card-text text-center">Chat with our professionals to verify your payments</p>
+                        </div>
+                      </div>
+                </div>
+
+                <!-- third column -->
+                <div class="col-sm-12 col-lg-4 mb-3">
+                    <div class="card card-home">
+                        <div class="card-body">
+                            <h5 class="card-title text-center mt-4">Fast</h5>
+                        <p class="card-text text-center">Enjoy fast processing of all confirmed payments.</p> 
+                        </div>
+                      </div>
+                </div>
+
+            </div>
+
+
+            <!-- send money button -->
+            <div class="text-center mt-3 mb-4">
+                <button type="button" id="send" class="btn btn-primary btn-lg">Send Money</button>
+            </div>
+            
+        </div>
+
+        <!-- footer -->
+        <!-- <footer class="container text-center">
+            <p class="copyright">&copy; Copyright PayNaija 2020.</p>
+        </footer> -->
+    
+
+
+
+
+
+
+ 
+<script src="dist/jquery.min.js"></script>
+<script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+<script src="lib/viewdata.js"></script>
+<script src="lib/jquery.cookie.js"></script>
+<script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+    <!-- Forms Validations Plugin -->
+<script src="/assets/js/plugins/jquery.validate.min.js"></script>
+<script src="iziToast-master/dist/js/iziToast.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        
+        $('#send').on('click', function(){
+            window.location.replace('transfer.html')
+        })
+
+
+    })  
+  </script> 
+</body>
+</html>

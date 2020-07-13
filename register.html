@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Naija - Register</title>
+    <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
+      <!-- Import Google font and icons -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css">
+      <link href="style.css" rel="stylesheet">
+      <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="iziToast-master/dist/css/iziToast.min.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- first column -->
+            <div class="col-sm-12 col-lg-6 d-none d-md-block mt-5">
+              <img src="img/transfer.svg" class="img-fluid mt-5" alt="login" />
+            </div>
+
+
+
+            <!-- second column -->
+          <div class="col-sm-12 col-lg-6">
+            
+            <div style="margin-top: 40px;" class="text-center">
+              <img src="img/PayNaija.png" class="" alt="logo" width="100" height="50" />
+            </div>
+
+              <div class="text-center">
+                <h6 style="font-size: 20px;" class="mt-4">Borderless payment with ease.</h6>
+              </div>
+
+          <form id="register" style="width: 80%; margin: auto;">
+  
+              <div class="form-group mt-4">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+
+               <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" class="form-control" id="fullname" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-group mb-2" id="show_hide_password">
+                    <input type="password" class="form-control" id="password">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                  </div>
+            </div>
+
+              <div class="form-group">
+                <label for="country">Country of residence</label>
+                <select class="form-control" id="country">
+
+                </select>
+              </div>
+
+            
+            <button type="submit" class="btn btn-primary mt-2" style="width: 100%;" >Sign Up <span id="spinner"></span></button>
+              
+          </form>
+
+
+          <div class="text-center mt-4">
+          <p>Already have an account? <a href="index.html" style="text-decoration: none;" class="text-color">Login</a></p>
+          </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+  
+    
+
+
+
+
+<script src="dist/jquery.min.js"></script>
+<script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+<script src="lib/viewdata.js"></script>
+<script src="lib/jquery.cookie.js"></script>
+<script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+ <!-- Forms Validations Plugin -->
+ <script src="/assets/js/plugins/jquery.validate.min.js"></script>
+ <script src="iziToast-master/dist/js/iziToast.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+      $("#show_hide_password a").on('click', function(event) {
+             event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+
+      
+      // Api request to get all countries
+		var view_data = new ViewData();
+        var countryUrl = view_data.CountriesURL;
+
+      $.ajax({
+                url: countryUrl,
+                type: "GET",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+
+                },
+                success: function(data)
+                {
+					var country = data.data
+					console.log(country)
+					for(var i in country){
+					var myCountry = country[i]['country']; //alerts key's value
+					$("select#country").append("<option value='"+myCountry+"'>"+myCountry+"</option>");
+					}
+                },
+                complete: function(jqXHR){
+					if (jqXHR.status != '200') {
+                      var obj = $.parseJSON(jqXHR.responseText);
+                  	 }
+                 }  
+          })
+		
+
+      // on form submit
+        $("form").submit(function(event) {
+            event.preventDefault()
+           var view_data = new ViewData();
+          var signup_function = "member";
+            var url = view_data.ControllerRouteURL + signup_function;
+
+          var email = $("#email").val();
+          var phone = $("#phone").val();
+          var country = $('select#country option:selected').val();
+          var password = $("#password").val();
+          var fullname = $('#fullname').val();
+         
+
+          var data = {
+            email: email,
+            fullName: fullname,
+            password: password,
+            country: country,
+            phoneNo: phone
+          }
+
+          $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                url: url,
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+              beforeSend: function(jqXHR, settings) {
+                  $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
+              },
+              success: function(data) {
+                console.log(data)
+                iziToast.success({
+                    message: 'Registration Successful, Login to continue',
+                    progressBar: false,
+                    position: 'topRight'
+                });
+
+                $("#email").val('');
+                $("#phone").val('');
+                $("#fullname").val('');
+                $("#password").val('');
+
+              },
+              error: function(data){
+                  $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");  
+                  iziToast.error({
+                    message: 'User with this email already exist.',
+                    progressBar: false,
+                    position: 'topRight'
+                });
+
+              },
+              complete: function(jqXHR) {
+                  if (jqXHR.status != '200') {
+                      var obj = $.parseJSON(jqXHR.responseText);
+                  }
+                  $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
+              }
+          })
+         })
+         
+
+
+    })  
+  </script>  
+</body>
+</html>
