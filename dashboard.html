@@ -38,31 +38,31 @@
                 </a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="registerApp.html" data-step="8" data-intro="<p style='color: blue'>App Registration</p> Register your application here and use as a payment platform for your business." data-position='right' data-scrollTo='tooltip'>
+                <a class="nav-link" href="#" data-step="8" data-intro="<p style='color: blue'>App Registration</p> Register your application here and use as a payment platform for your business." data-position='right' data-scrollTo='tooltip'>
                   <i class="material-icons">info_outline</i>
                   <p>Pending Payments</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="my-apps.html">
+                <a class="nav-link" href="#">
                   <i class="material-icons">done</i>
                   <p>Completed Payments</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="my-apps.html">
+                <a class="nav-link" href="#">
                   <i class="material-icons">apps</i>
                   <p>Exchange Rate</p>
                 </a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="transactions.html">
+                <a class="nav-link" href="#">
                   <i class="material-icons">person</i>
                   <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="logout.html">
+                <a class="nav-link" href="admin_logout.html">
                 <i class="mdi mdi-logout"></i>
                   <p>Logout</p>
                 </a>
@@ -357,7 +357,7 @@
                 processData:false,
                 beforeSend : function(jqXHR, settings)
                 {
-                  jqXHR.setRequestHeader('Token',token);
+                  jqXHR.setRequestHeader('Authorization',token);
                 },
                 success: function(data)
                 {
