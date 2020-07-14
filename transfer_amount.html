@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Naija - Transfer Amount</title>
+    <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
+      <!-- Import Google font and icons -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css">
+      <link href="style.css" rel="stylesheet">
+      <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation bar -->
+    <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="home.html"><img src="img/PayNaija.png" alt="logo" width="100" height="50" /></a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="home.html" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="#">Transfer</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="contact.html">Contact</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" id="fullName">Hi, </a>
+                                    <div class="dropdown-menu">
+										<a class="dropdown-item" href="logout.html">Logout</a>
+									</div>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">
+									<span class="count" id="notifications-count">5</span>
+									<i class="mdi mdi-bell" style="font-size: 18px;"></i></a>
+								</li>
+							</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+        </div>
+
+    </div>
+
+    
+        <!-- main page design layout -->
+        <div class="container"  style="margin-top: 130px;">
+
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-7">
+                    <h2 style="line-height: 40px; color: #007bff;">Send that money abroad without any hazzle.</h2>
+                    <p class="mt-4" style="">The Ease to use, our reliability and the speed at which we execute all transactions is our only power.</p>
+                </div>
+                <div class="col-sm-12 col-lg-5">
+                    <!-- how much input -->
+                    <div class="form-group">
+                        <label for="send">How much do you want to send?</label>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" id="send">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">USD</div>
+                              </div>
+						  </div>
+						  <span id="sendField" class="error">Invalid input</span>
+                    </div>
+                    
+                    <!-- conversion rate -->
+                    <p class="text-center icon-color">Our conversion rate = <span class="rate">288</span> Naira.</p>
+
+                    <!-- corresponding amount -->
+                    <div class="form-group mt-4">
+                        <label for="transfer">This is how much you pay in Naira</label>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" id="transfer">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">NGN</div>
+                              </div>
+						  </div>
+						  <span id="transferField" class="error">Invalid input</span>
+                    </div>
+
+                    <!-- continue button -->
+                    <button type="submit" class="btn btn-secondary" style="width: 100%;" id="continue" disabled>Continue</button>
+                    
+
+                </div>
+            </div>
+			
+		
+			
+
+
+			
+            
+        </div>
+
+
+			<!-- footer design -->
+			<footer style="background: #333333; padding-bottom: 30px; margin-top: 120px;" >
+
+			<div class="container pt-5">
+				<div class="row">
+					<div class="col-lg-4 col-sm-12">
+						<h6 style="color: white;">Our Information</h6>
+						<p style="color: white; font-size: 13px;" >7321 N Paulina St, Chicago, IL. 60626.</p>
+					</div>
+	
+					<div class="col-lg-4 col-sm-12">
+							<h6 style="color: white;">Our Correspondence</h6>
+							<p style="color: white; font-size: 13px;">+1 (312) 774-9047</p>
+					</div>
+					<div class="col-lg-4 col-sm-12">
+							<h6 style="color: white;">Connect with us.</h6>
+							<ul style="display: flex; list-style: none;">
+								<li><a href="#" style="color: white;"><i class="fab fa-twitter"></i></a></li>
+								<li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-facebook"></i></a></li>
+								<li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a></li>
+								<li style="margin-left: 20px;"><a href="mailto:seyiekundayo879@gmail.com" style="color: white;"><i class="mdi mdi-email"></i></a></li>
+							</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="container mt-3">
+				<p style="color: white; font-size: 14px;">&copy; PayNaija 2020. All rights reserved.</p>
+			</div>
+		</footer>
+    
+
+
+
+
+
+
+
+<script src="dist/jquery.min.js"></script>
+<script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+<script src="lib/viewdata.js"></script>
+<script src="lib/jquery.cookie.js"></script>
+<script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+    <!-- Forms Validations Plugin -->
+<script src="/assets/js/plugins/jquery.validate.min.js"></script>
+<script src="iziToast-master/dist/js/iziToast.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+		var view_data = new ViewData();
+        var fullName = view_data.getStoredUserDetail('fullName');
+
+        $('#fullName').append(fullName)
+
+	
+        $('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+	    });
+
+		// Api request to the rate in naira
+		var view_data = new ViewData();
+		var send_function = "rate";
+		var token = view_data.getStoredUserDetail("token");
+        var rateUrl = view_data.ControllerRouteURL + send_function;
+
+      $.ajax({
+                url: rateUrl,
+                type: "GET",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+					jqXHR.setRequestHeader('Authorization',token);
+                },
+                success: function(data)
+                {
+					console.log(data)
+					const textRate = data[0].rate
+					$('.rate').text(textRate)
+                },
+                complete: function(jqXHR){
+					if (jqXHR.status != '200') {
+                      var obj = $.parseJSON(jqXHR.responseText);
+                  	 }
+                 }  
+          })
+
+		// calculate the equivalent value of naira when dollar is inputed
+		$('#send').on('input', function() {
+				var input=$(this);
+				var is_name = input.val();
+                var pattern = /^-?[0-9]+(.[0-9]{1-7})?$/;
+				var is_name=pattern.test(input.val());
+				var error_element = $("#sendField");
+                if(is_name){
+					error_element.removeClass("error_show").addClass("error");
+					var rate = parseInt($('.rate').text());
+					var send = parseInt($('#send').val());
+					var answer = send * rate
+					$('#transfer').val(answer.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+					$('#continue').attr('disabled', false)
+					$('#continue').removeClass('btn-secondary').addClass('btn-primary')
+				}else{
+					error_element.removeClass("error").addClass("error_show")
+					$('#continue').attr('disabled', true)
+					$('#continue').removeClass('btn-primary').addClass('btn-secondary')
+				}
+			
+		})
+
+		// calculate the equivalent value of dollar when naira is inputed
+		$('#transfer').on('input', function() {
+				var input=$(this);
+				var is_name = input.val();
+                var pattern = /^-?[0-9]+(.[0-9]{1-7})?$/;
+                var is_name=pattern.test(input.val());
+				var error_element = $("#transferField");
+                if(is_name){
+					error_element.removeClass("error_show").addClass("error");
+					var rate = parseInt($('.rate').text());
+					var send = parseInt($('#transfer').val());
+					var answer = send / rate
+					$('#send').val(answer.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+					$('#continue').attr('disabled', false)
+					$('#continue').removeClass('btn-secondary').addClass('btn-primary')
+				}else{
+					error_element.removeClass("error").addClass("error_show")
+					$('#continue').attr('disabled', true)
+					$('#continue').removeClass('btn-primary').addClass('btn-secondary')
+				}
+			
+		})
+
+	//  submit button to proceed to transfer page
+		$('#continue').click(function(){
+			var nairaAmount = $('#transfer').val();
+			var dollarAmount = $('#send').val();
+		  var filename="transfer.html?naira-amount="+ nairaAmount + '&dollar-amount=' + dollarAmount;
+          window.location.replace(filename);
+
+		})
+
+
+
+    })  
+  </script> 
+</body>
+</html>

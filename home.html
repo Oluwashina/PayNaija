@@ -33,14 +33,23 @@
 									<a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="transfer.html">Transfer</a>
+									<a class="nav-link" href="transfer_amount.html">Transfer</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="contact.html">Contact</a>
-								</li>
+                                </li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="logout.html">Logout</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" id="fullName">Hi, </a>
+                                    <div class="dropdown-menu">
+										<a class="dropdown-item" href="logout.html">Logout</a>
+									</div>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">
+                                        <span class="count" id="notifications-count">5</span>
+                                        <i class="mdi mdi-bell" style="font-size: 20px;"></i></a>
 								</li>
+                                
 							</ul>
 						</div>
 						
@@ -101,15 +110,42 @@
 
             <!-- send money button -->
             <div class="text-center mt-3 mb-4">
-                <button type="button" id="send" class="btn btn-primary btn-lg">Send Money</button>
+                <button type="button" id="send" class="btn btn-primary">Send Money</button>
             </div>
             
         </div>
 
-        <!-- footer -->
-        <!-- <footer class="container text-center">
-            <p class="copyright">&copy; Copyright PayNaija 2020.</p>
-        </footer> -->
+       
+     <!-- footer design -->
+    <footer style="background: #333333; padding-bottom: 20px;" class="mt-5">
+
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12">
+                    <h6 style="color: white;">Our Information</h6>
+                    <p style="color: white; font-size: 13px;" >7321 N Paulina St, Chicago, IL. 60626.</p>
+                </div>
+
+                <div class="col-lg-4 col-sm-12">
+                        <h6 style="color: white;">Our Correspondence</h6>
+                        <p style="color: white; font-size: 13px;">+1 (312) 774-9047</p>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                        <h6 style="color: white;">Connect with us.</h6>
+                        <ul style="display: flex; list-style: none;">
+                            <li><a href="#" style="color: white;"><i class="fab fa-twitter"></i></a></li>
+                            <li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-facebook"></i></a></li>
+                            <li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a></li>
+                            <li style="margin-left: 20px;"><a href="mailto:seyiekundayo879@gmail.com" style="color: white;"><i class="mdi mdi-email"></i></a></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mt-3">
+            <p style="color: white; font-size: 14px;">&copy; PayNaija 2020. All rights reserved.</p>
+        </div>
+    </footer>
     
 
 
@@ -128,6 +164,22 @@
 <script src="iziToast-master/dist/js/iziToast.min.js"></script>
   <script>
     $(document).ready(function(){
+
+        var view_data = new ViewData();
+        var fullName = view_data.getStoredUserDetail('fullName');
+
+        $('#fullName').append(fullName)
+        
+
+
+        $('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+	    });	
         
         $('#send').on('click', function(){
             window.location.replace('transfer.html')

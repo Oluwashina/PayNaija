@@ -63,14 +63,14 @@
                 <button type="submit" class="btn btn-primary mt-2" style="width: 100%;" >Sign In <span id="spinner"></span></button>
 
                 <div class="text-right" style="margin-top: 10px;">
-                  <a href="forgot-password.html" style="text-decoration: none;" class="text-color">Forgot password?</a>
+                  <a href="forgot-password.html" style="text-decoration: none;" class="icon-color">Forgot password?</a>
                 </div>
                   
               </form>
 
 
               <div class="text-center" style="margin-top: 70px;">
-              <p>Don't have an account? <a href="register.html" style="text-decoration: none;" class="text-color">Click here to register</a></p>
+              <p>Don't have an account? <a href="register.html" style="text-decoration: none;" class="icon-color">Click here to register</a></p>
               </div>
 
               </div>
@@ -146,7 +146,7 @@
             success: function(data) {
                console.log(data)
                 view_data.storeUserDetails("token", data["token"]);
-                // view_data.storeUserDetails("firstName", data["firstName"]);
+                view_data.storeUserDetails("fullName", data["fullName"]);
                 // view_data.storeUserDetails("lastName", data["lastName"]);
                 window.location.replace("home.html");
             },

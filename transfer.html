@@ -30,17 +30,25 @@
 						
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0">
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="home.html" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
 								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
 									<a class="nav-link" href="#">Transfer</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="contact.html">Contact</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="logout.html">Logout</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" id="fullName">Hi, </a>
+                                    <div class="dropdown-menu">
+										<a class="dropdown-item" href="logout.html">Logout</a>
+									</div>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">
+                                        <span class="count" id="notifications-count">5</span>
+                                        <i class="mdi mdi-bell" style="font-size: 20px;"></i></a>
 								</li>
 							</ul>
 						</div>
@@ -72,6 +80,16 @@
 						<div class="form-group">
 							<label for="lastName">Last Name</label>
 							<input type="text" class="form-control" id="lastName" required>
+						  </div>
+					</div>
+
+					<!-- amount show -->
+					<div class="col-sm-12 col-lg-4">
+						<div class="card ml-5 mb-3">
+							<div class="card-body">
+								<h6 class="card-title text-center icon-color">Amount to Transfer (Naira)</h6>
+								 <p class="card-text text-center mt-2 nairaAmount" style="font-size: 30px;">&#8358;</p>
+							</div>
 						  </div>
 					</div>
 				</div>
@@ -170,10 +188,39 @@
 				
 
 			</form>
+			   
+		</div>
+		
+		 <!-- footer design -->
+		 <footer style="background: #333333; padding-bottom: 20px;" class="mt-5">
+
+			<div class="container pt-5">
+				<div class="row">
+					<div class="col-lg-4 col-sm-12">
+						<h6 style="color: white;">Our Information</h6>
+						<p style="color: white; font-size: 13px;" >7321 N Paulina St, Chicago, IL. 60626.</p>
+					</div>
+	
+					<div class="col-lg-4 col-sm-12">
+							<h6 style="color: white;">Our Correspondence</h6>
+							<p style="color: white; font-size: 13px;">+1 (312) 774-9047</p>
+					</div>
+					<div class="col-lg-4 col-sm-12">
+							<h6 style="color: white;">Connect with us.</h6>
+							<ul style="display: flex; list-style: none;">
+								<li><a href="#" style="color: white;"><i class="fab fa-twitter"></i></a></li>
+								<li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-facebook"></i></a></li>
+								<li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a></li>
+								<li style="margin-left: 20px;"><a href="mailto:seyiekundayo879@gmail.com" style="color: white;"><i class="mdi mdi-email"></i></a></li>
+							</ul>
+					</div>
+				</div>
+			</div>
 			
-           
-            
-        </div>
+			<div class="container mt-3">
+				<p style="color: white; font-size: 14px;">&copy; PayNaija 2020. All rights reserved.</p>
+			</div>
+		</footer>
 
       
     
@@ -195,6 +242,45 @@
   <script>
     $(document).ready(function(){
 
+		var view_data = new ViewData();
+        var fullName = view_data.getStoredUserDetail('fullName');
+
+        $('#fullName').append(fullName)
+
+		  // to get the query string parameters from the url
+		  var nairaValue;
+        var dollarValue;
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        parms.forEach(function(e) {
+            var keyValue = e.split("=");
+            var key = keyValue[0];
+            var value = keyValue[1];
+            if(key === 'naira-amount') {
+                // console.log(value);
+                nairaValue = value;
+            }
+            else if(key === 'dollar-amount'){
+                // console.log(value);
+            dollarValue = value
+            }
+		})
+
+		console.log(nairaValue)
+		console.log(dollarValue)
+
+		$('.nairaAmount').append(nairaValue)
+        
+
+
+		$('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+	    });
 
 
 		// Api request to get all countries
@@ -264,7 +350,9 @@
 			email: email,
 			accountNumber: accountNumber,
 			accountName: accountName,
-			bankName: bankName
+			bankName: bankName,
+			amountNaira: nairaValue,
+			amountDollar: dollarValue
           }
 
           $.ajax({

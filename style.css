@@ -5,6 +5,7 @@
 }
 body{
 	background-color: #ededed;
+	font-family: 'Work Sans';
 }
 
 /* Navigation bar */
@@ -104,6 +105,111 @@ body{
     transition: all 200ms linear;
 }
 
+.nav-item .dropdown-menu {
+    transform: translate3d(0, 10px, 0);
+    visibility: hidden;
+    opacity: 0;
+	max-height: 0;
+    display: block;
+	padding: 0;
+	margin: 0;
+    transition: all 200ms linear;
+}
+.nav-item.show .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+	max-height: 999px;
+    transform: translate3d(0, 0px, 0);
+}
+.dropdown-menu {
+	padding: 10px!important;
+	margin: 0;
+	font-size: 13px;
+	letter-spacing: 1px;
+	color: #212121;
+	background-color: #fcfaff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.15);
+    transition: all 200ms linear;
+}
+.dropdown-toggle::after {
+	display: none;
+}
+
+.dropdown-item {
+	padding: 3px 15px;
+	color: #212121;
+	border-radius: 2px;
+    transition: all 200ms linear;
+}
+.dropdown-item:hover, 
+.dropdown-item:focus {
+	color: #fff;
+	background-color: transparent;
+}
+.nav-item .dropdown-menu {
+    transform: translate3d(0, 10px, 0);
+    visibility: hidden;
+    opacity: 0;
+	max-height: 0;
+    display: block;
+	padding: 0;
+	margin: 0;
+    transition: all 200ms linear;
+}
+.nav-item.show .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+	max-height: 999px;
+    transform: translate3d(0, 0px, 0);
+}
+.dropdown-menu {
+	padding: 10px!important;
+	margin: 0;
+	font-size: 13px;
+	letter-spacing: 1px;
+	color: #212121;
+	background-color: #fcfaff;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.15);
+    transition: all 200ms linear;
+}
+.dropdown-toggle::after {
+	display: none;
+}
+
+.dropdown-item {
+	padding: 3px 15px;
+	color: #212121;
+	border-radius: 2px;
+    transition: all 200ms linear;
+}
+.dropdown-item:hover, 
+.dropdown-item:focus {
+	color: #333333;
+	background-color: transparent;
+}
+
+/* notifications */
+.count{
+	position: absolute;
+	display: inline-block;
+	top: -1px;
+	right: -5px;
+	height: 15px;;
+	min-width: 15px;
+	overflow: hidden;
+	background: red;
+	color: white;
+	text-align: center;
+	border-radius: 50%;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 15px;
+  }
+
 
 /* button colors */
 .btn-color{
@@ -128,6 +234,14 @@ i.features{
 	color: #007bff;
   
   }
+
+  
+.error{
+	display: none;
+}
+.error_show{
+	color: red;
+}
 
 
 /* Home Page */
@@ -188,6 +302,9 @@ input[type=number]:focus,
 ================================================== */
 
 @media (max-width: 767px) { 
+	.transfer{
+		width: 100px;
+	}
 	h1{
 		font-size: 38px;
 	}
