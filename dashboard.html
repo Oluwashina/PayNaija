@@ -325,20 +325,12 @@
 <script src="lib/jquery.cookie.js"></script>
 <script src="lib/viewdata.js"></script>
 <script src="https://kit.fontawesome.com/d54c227c34.js"></script>
-<script src="jQuery-Plugin-To-Handle-CSS3-Powered-Spinners-Loaders-Loading-js/dist/jquery.loading.min.js"></script>
 <script>
      $(document).ready(function () {
 
         var view_data = new ViewData();
-        var firstname = view_data.getStoredUserDetail("firstname");
-        var lastname = view_data.getStoredUserDetail("lastname");
-        var username = view_data.getStoredUserDetail("contactNumber");
-        // $('.compName').text(firstname + " " + lastname)
-        md.initDashboardPageCharts();
-
         var token = view_data.getStoredUserDetail("token"); 
-        var wallet = "wallets/holder/";
-        walleturl = view_data.ControllerRouteSecureCallsURL + wallet + username;
+
 
         // recent transactions table
         $('#myTable').DataTable({
@@ -352,9 +344,11 @@
         })
 
 
-          // Generic wallet balance check
+          // Generic dashboard details
+          var dashboard = "allpayment";
+          var dashboardUrl = view_data.ControllerRouteURL + dashboard;
         $.ajax({
-                url: walleturl,
+                url: dashboardUrl,
                 type: "GET",
                 dataType: 'json',
                 data: false,
@@ -368,16 +362,11 @@
                 success: function(data)
                 {
                     console.log(data);
-                    // for(i = 0; i < data.length; i++)
-                    //    {
-                        var balance = data[0]['availableBalance'].toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                        $('.wallet-balance').append(balance)
-                      //  }
                 },
                 complete: function(jqXHR){
                       if(jqXHR.status == '401'){
                         alert("Unable to complete request");
-                        window.location.replace("logout.html");
+                        window.location.replace("admin_logout.html");
                           }
                   } 
           })
