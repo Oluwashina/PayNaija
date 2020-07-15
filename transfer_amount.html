@@ -202,9 +202,10 @@
 					$('.rate').text(textRate)
                 },
                 complete: function(jqXHR){
-					if (jqXHR.status != '200') {
-                      var obj = $.parseJSON(jqXHR.responseText);
-                  	 }
+					if(jqXHR.status == '401'){
+                        alert("Session expired! Please login again.");
+                        window.location.replace("logout.html");
+                     }
                  }  
           })
 

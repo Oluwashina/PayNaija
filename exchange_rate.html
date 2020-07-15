@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - PayNaija</title>
+    <title>Exchange Rate - PayNaija</title>
     <!-- favicon -->
     <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
     <!--Import Google Icon Font-->
@@ -31,8 +31,8 @@
             </a></div>
           <div class="sidebar-wrapper">
             <ul class="nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">
                   <i class="material-icons">dashboard</i>
                   <p>Dashboard</p>
                 </a>
@@ -49,8 +49,8 @@
                   <p>Completed Payments</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="exchange_rate.html">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
                   <i class="material-icons">money</i>
                   <p>Exchange Rate</p>
                 </a>
@@ -75,7 +75,7 @@
           <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
               <div class="navbar-wrapper">
-                <a class="navbar-brand" href="">Dashboard</a>
+                <a class="navbar-brand" href="">Exchange Rate</a>
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -138,98 +138,40 @@
           <!-- End Navbar -->
           <div class="content">
             <div class="container">
-              <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-header card-header-info card-header-icon">
-                      <div class="card-icon">
-                        <i class="material-icons">person</i>
-                      </div>
-                      <p class="card-category">Users</p>
-                      <h3 class="card-title users"></h3>
-                    </div>
-                    <div class="card-footer">
-                      <div class="stats">
-                        <a href="users.html">View all</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                      <div class="card-icon">
-                        <i class="material-icons">check</i>
-                      </div>
-                      <p class="card-category">Pending Payments</p>
-                      <h3 class="card-title pending"></h3>
-                    </div>
-                    <div class="card-footer">
-                      <div class="stats">
-                        <a href="pending_payments.html">View all</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                      <div class="card-icon">
-                        <i class="material-icons">info_outline</i>
-                      </div>
-                      <p class="card-category">Completed Payments</p>
-                      <h3 class="card-title completed"></h3>
-                    </div>
-                    <div class="card-footer">
-                      <div class="stats">
-                        <a href="completed_payments.html">View all</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-4 col-md-12">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-danger card-header-icon">
-                          <div class="card-icon">
-                            <i class="material-icons">money</i>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-lg-10">
+                        <div class="card">
+                          <div class="card-header">
+                            <h4 class="card-title">Set New Exchange Rate</h4>
                           </div>
-                          <p class="card-category">Current Exchange</p>
-                          <h3 class="card-title">&#8358;<span class="exchangeValue"></span> / $1</h3>
-                        </div>
-                        <div class="card-footer">
-                          <div class="stats">
-                            <a href="exchange_rate.html">Modify</a>
+                          <div class="card-body">
+                            <form id="registerApp">
+                              <div class="row">
+
+                                <div class="col-md-12">
+                                  <div class="form-group has-label">
+                                    <label>Current Exchange Rate</label>
+                                    <input type="text" id="rate" name="rate" class="form-control" disabled required>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group has-label">
+                                      <label>Enter new exchange rate</label>
+                                      <input type="tel" id="newRate" name="newRate" class="form-control" required>
+                                    </div>
+                                  </div>
+
+                                  <div class="container text-center"> 
+                                    <button type="submit" id="register" class="btn btn-primary text-center">Submit <span id="spinner"></span></button>   
+                                 </div>
+                              </div>
+                              
+                            </form>
                           </div>
                         </div>
                       </div>
-                </div>
-
-                <div class="col-lg-8 col-md-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h4 class="card-title">Pending Payments</h4>
-                      <p class="card-category tableDate"></p>
                     </div>
-                    <div class="card-body table-responsive">
-                      <table class="table table-hover" id="myTable">
-                        <thead class="text-black">
-                          <th>Date Initialized</th>
-                          <th>Name</th>
-                          <th>Phone Number</th>
-                          <th>Amount ($)</th>
-                          <th>Amount (&#8358;)</th>
-                        </thead>
-                        <tbody>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
             </div>
           </div>
           <footer class="footer">
@@ -309,74 +251,11 @@
         var view_data = new ViewData();
         var token = view_data.getStoredUserDetail("token"); 
 
-        var today = new Date();
-
-      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-      console.log(date)
-
-      $('.tableDate').text(date)
-
-
-        // recent transactions table
-        var table = $('#myTable').DataTable({
-          "retrieve": true,
-          "language": {
-            "emptyTable": "No recent transactions made"
-              },
-           "bPaginate": false,
-           "bInfo": false,
-           "bFilter": false,
-        })
-
-
-          // Generic dashboard details
-          var dashboard = "allpayment";
-          var dashboardUrl = view_data.ControllerRouteURL + dashboard;
-        $.ajax({
-                url: dashboardUrl,
-                type: "GET",
-                dataType: 'json',
-                data: false,
-                contentType: false,
-                      cache: false,
-                processData:false,
-                beforeSend : function(jqXHR, settings)
-                {
-                  jqXHR.setRequestHeader('Authorization',token);
-                },
-                success: function(data)
-                {
-                    console.log(data);
-                    $('.users').text(data.noOfUser)
-                    $('.pending').text(data.pendingPaymentCount)
-                    $('.completed').text(data.completedPaymentCount)
-
-                    // pending payments display
-                    var recentPayment = data.recentPayment
-                    for(i = 0;i < recentPayment.length;i++)
-                       {
-                        table.row.add( [
-                                  recentPayment[i]['dateCreated'].slice(0, 10),
-                                  recentPayment[i]['fName'],
-                                  recentPayment[i]['phoneNo'],
-                                  recentPayment[i]['amountDollar'],
-                                  recentPayment[i]['amountNaira'],
-                                ] ).draw( false );
-                       }
-                },
-                complete: function(jqXHR){
-                      if(jqXHR.status == '401'){
-                        alert("Session expired, Kindly login again to continue");
-                        window.location.replace("admin_logout.html");
-                          }
-                  } 
-          })
-
           // Api request to the rate in naira
           var view_data = new ViewData();
           var send_function = "rate";
           var token = view_data.getStoredUserDetail("token");
-              var rateUrl = view_data.ControllerRouteURL + send_function;
+            var rateUrl = view_data.ControllerRouteURL + send_function;
 
       $.ajax({
                 url: rateUrl,
@@ -388,14 +267,14 @@
                 processData:false,
                 beforeSend : function(jqXHR, settings)
                 {
-					        jqXHR.setRequestHeader('Authorization',token);
+				jqXHR.setRequestHeader('Authorization',token);
                 },
                 success: function(data)
                 {
 
                   console.log(data)
                   const textRate = data[0].rate
-				        	$('.exchangeValue').text(textRate)
+				    $('#rate').val(textRate)
 				
                 },
                 complete: function(jqXHR){
@@ -406,7 +285,90 @@
                   }
           })
 
-         
+        //   set exchange rate
+        $("#registerApp").validate({
+          submitHandler: function(form, event) {
+            event.preventDefault()
+            var pattern = /^-?[0-9]+(.[0-9]{1-7})?$/;
+            var is_name=pattern.test($('#newRate').val());
+            if(is_name){
+
+              var rate = $('#newRate').val();
+              var view_data = new ViewData();
+              var post_rate = "rate";
+              var postrateUrl = view_data.ControllerRouteURL + post_rate;
+
+              var data = {
+                rate: rate
+              }
+
+                $.ajax({
+                url: postrateUrl,
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                beforeSend : function(jqXHR, settings)
+                {
+                jqXHR.setRequestHeader('Authorization',token);
+                $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
+                },
+                success: function(data)
+                {
+                 console.log(data)
+                 alert("Successfuly changed exchange rate")
+                 refreshRate()
+                 $('#newRate').val('')
+                },
+                complete: function(jqXHR){
+                    if(jqXHR.status == '401'){
+                            alert("Unable to complete request");
+                            window.location.replace("admin_logout.html");
+                        }
+                    $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
+                    }
+                 })
+            }else{
+                alert("Invalid input")
+            }
+          }
+        })
+
+
+        function refreshRate() {
+            var view_data = new ViewData();
+          var send_function = "rate";
+          var token = view_data.getStoredUserDetail("token");
+            var rateUrl = view_data.ControllerRouteURL + send_function;
+
+            $.ajax({
+                        url: rateUrl,
+                        type: "GET",
+                        dataType: 'json',
+                        data: false,
+                        contentType: false,
+                            cache: false,
+                        processData:false,
+                        beforeSend : function(jqXHR, settings)
+                        {
+                        jqXHR.setRequestHeader('Authorization',token);
+                        },
+                        success: function(data)
+                        {
+
+                        console.log(data)
+                        const textRate = data[0].rate
+                            $('#rate').val(textRate)
+                        
+                        },
+                        complete: function(jqXHR){
+                        if(jqXHR.status == '401'){
+                                alert("Session expired, Kindly login again to continue");
+                                window.location.replace("admin_logout.html");
+                            }
+                        }
+                })
+            }
 
     });
 </script>

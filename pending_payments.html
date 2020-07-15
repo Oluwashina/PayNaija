@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - PayNaija</title>
+    <title>Pending Payments - PayNaija</title>
     <!-- favicon -->
     <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
     <!--Import Google Icon Font-->
@@ -31,14 +31,14 @@
             </a></div>
           <div class="sidebar-wrapper">
             <ul class="nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">
                   <i class="material-icons">dashboard</i>
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="pending_payments.html">
+              <li class="nav-item active">
+                <a class="nav-link" href="#" >
                   <i class="material-icons">info_outline</i>
                   <p>Pending Payments</p>
                 </a>
@@ -75,7 +75,7 @@
           <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
               <div class="navbar-wrapper">
-                <a class="navbar-brand" href="">Dashboard</a>
+                <a class="navbar-brand" href="">Pending Payments</a>
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -138,99 +138,56 @@
           <!-- End Navbar -->
           <div class="content">
             <div class="container">
-              <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-header card-header-info card-header-icon">
-                      <div class="card-icon">
-                        <i class="material-icons">person</i>
-                      </div>
-                      <p class="card-category">Users</p>
-                      <h3 class="card-title users"></h3>
-                    </div>
-                    <div class="card-footer">
-                      <div class="stats">
-                        <a href="users.html">View all</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                      <div class="card-icon">
-                        <i class="material-icons">check</i>
-                      </div>
-                      <p class="card-category">Pending Payments</p>
-                      <h3 class="card-title pending"></h3>
-                    </div>
-                    <div class="card-footer">
-                      <div class="stats">
-                        <a href="pending_payments.html">View all</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                      <div class="card-icon">
-                        <i class="material-icons">info_outline</i>
-                      </div>
-                      <p class="card-category">Completed Payments</p>
-                      <h3 class="card-title completed"></h3>
-                    </div>
-                    <div class="card-footer">
-                      <div class="stats">
-                        <a href="completed_payments.html">View all</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-4 col-md-12">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-danger card-header-icon">
-                          <div class="card-icon">
-                            <i class="material-icons">money</i>
-                          </div>
-                          <p class="card-category">Current Exchange</p>
-                          <h3 class="card-title">&#8358;<span class="exchangeValue"></span> / $1</h3>
-                        </div>
-                        <div class="card-footer">
-                          <div class="stats">
-                            <a href="exchange_rate.html">Modify</a>
+                <ul class="nav nav-pills nav-pills-primary" role="tablist">
+                  <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true">
+                        All Transactions
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#link3" role="tablist" aria-expanded="false">
+                         
+                      </a>
+                  </li>
+              </ul>
+              <div class="mt-3">
+              <div class="tab-content tab-space">
+                  <div class="tab-pane active" id="link1" aria-expanded="true">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="card">
+                
+                          <div class="card-body table-responsive">
+                            <table class="table table-hover" id="myTable">
+                              <thead class="text-black">
+                                <th>Status</th>
+                                <th>Name</th>
+                                <th>Date Initialized</th>
+                                <th>Phone Number</th>
+                                <th>Amount (&#8358;)</th>
+                                <th>-</th>
+                              </thead>
+                              <tbody>
+                               
+                              </tbody>
+                            </table>
                           </div>
                         </div>
                       </div>
-                </div>
-
-                <div class="col-lg-8 col-md-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h4 class="card-title">Pending Payments</h4>
-                      <p class="card-category tableDate"></p>
-                    </div>
-                    <div class="card-body table-responsive">
-                      <table class="table table-hover" id="myTable">
-                        <thead class="text-black">
-                          <th>Date Initialized</th>
-                          <th>Name</th>
-                          <th>Phone Number</th>
-                          <th>Amount ($)</th>
-                          <th>Amount (&#8358;)</th>
-                        </thead>
-                        <tbody>
-                          
-                        </tbody>
-                      </table>
+                     
                     </div>
                   </div>
-                </div>
-
+                  <!-- second tab -->
+                  <div class="tab-pane" id="link3" aria-expanded="false">
+                    <div class="row">
+                      <div class="col-md-12">
+                        
+                      </div>
+                  </div>
               </div>
-            </div>
+              </div>
+              </div>
+              </div>
           </div>
           <footer class="footer">
             <div class="container-fluid">
@@ -322,10 +279,7 @@
           "retrieve": true,
           "language": {
             "emptyTable": "No recent transactions made"
-              },
-           "bPaginate": false,
-           "bInfo": false,
-           "bFilter": false,
+              }
         })
 
 
@@ -347,20 +301,21 @@
                 success: function(data)
                 {
                     console.log(data);
-                    $('.users').text(data.noOfUser)
-                    $('.pending').text(data.pendingPaymentCount)
-                    $('.completed').text(data.completedPaymentCount)
-
+                   
                     // pending payments display
-                    var recentPayment = data.recentPayment
-                    for(i = 0;i < recentPayment.length;i++)
+                    var pendingPayment = data.pendingPayment
+                    for(i = 0;i < pendingPayment.length;i++)
                        {
+                        var id = pendingPayment[i]['id'];
+                        var view_button = "viewTransaction('"+id+"')";
+                        var buttons = '<button class="mr-2 mb-2 btn btn-link" type="button" onClick='+view_button+'>View</button>';
                         table.row.add( [
-                                  recentPayment[i]['dateCreated'].slice(0, 10),
-                                  recentPayment[i]['fName'],
-                                  recentPayment[i]['phoneNo'],
-                                  recentPayment[i]['amountDollar'],
-                                  recentPayment[i]['amountNaira'],
+                                  pendingPayment[i]['status'],
+                                  pendingPayment[i]['fName'],
+                                  pendingPayment[i]['dateCreated'].slice(0, 10),
+                                  pendingPayment[i]['phoneNo'],
+                                  pendingPayment[i]['amountNaira'],
+                                  buttons
                                 ] ).draw( false );
                        }
                 },
@@ -372,43 +327,11 @@
                   } 
           })
 
-          // Api request to the rate in naira
-          var view_data = new ViewData();
-          var send_function = "rate";
-          var token = view_data.getStoredUserDetail("token");
-              var rateUrl = view_data.ControllerRouteURL + send_function;
-
-      $.ajax({
-                url: rateUrl,
-                type: "GET",
-                dataType: 'json',
-                data: false,
-                contentType: false,
-                      cache: false,
-                processData:false,
-                beforeSend : function(jqXHR, settings)
-                {
-					        jqXHR.setRequestHeader('Authorization',token);
-                },
-                success: function(data)
-                {
-
-                  console.log(data)
-                  const textRate = data[0].rate
-				        	$('.exchangeValue').text(textRate)
-				
-                },
-                complete: function(jqXHR){
-                  if(jqXHR.status == '401'){
-                        alert("Session expired, Kindly login again to continue");
-                        window.location.replace("admin_logout.html");
-                     }
-                  }
-          })
-
-         
-
     });
+
+    function viewTransaction(id){
+      alert(id)
+    }
 </script>
 </body>
 </html>
