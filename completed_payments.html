@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pending Payments - PayNaija</title>
+    <title>Completed Payments - PayNaija</title>
     <!-- favicon -->
     <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
     <!--Import Google Icon Font-->
@@ -41,6 +41,12 @@
                 <a class="nav-link" href="pending_payments.html" >
                   <i class="material-icons">info_outline</i>
                   <p>Pending Payments</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="received_payments.html">
+                  <i class="material-icons">emoji_people</i>
+                  <p>Received Payments</p>
                 </a>
               </li>
               <li class="nav-item active">
@@ -307,11 +313,14 @@
                     for(i = 0;i < completePayment.length;i++)
                        {
                         var id = completePayment[i]['id'];
+                        var firstName = completePayment[i]['fName'];
+                        var lastName = completePayment[i]['lName'];
+                        var fullName = firstName + " " + lastName
                         var view_button = "viewTransaction('"+id+"')";
                         var buttons = '<button class="mr-2 mb-2 btn btn-link" type="button" onClick='+view_button+'>View</button>';
                         table.row.add( [
                                   completePayment[i]['status'],
-                                  completePayment[i]['fName'],
+                                  fullName,
                                   completePayment[i]['dateCreated'].slice(0, 10),
                                   completePayment[i]['phoneNo'],
                                   completePayment[i]['amountNaira'],

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exchange Rate - PayNaija</title>
+    <title>Confirm Payments - PayNaija</title>
     <!-- favicon -->
     <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
     <!--Import Google Icon Font-->
@@ -37,8 +37,8 @@
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="pending_payments.html">
+              <li class="nav-item">
+                <a class="nav-link" href="pending_payments.html" >
                   <i class="material-icons">info_outline</i>
                   <p>Pending Payments</p>
                 </a>
@@ -49,14 +49,14 @@
                   <p>Received Payments</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ">
                 <a class="nav-link" href="completed_payments.html">
                   <i class="material-icons">done</i>
                   <p>Completed Payments</p>
                 </a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">
+              <li class="nav-item">
+                <a class="nav-link" href="exchange_rate.html">
                   <i class="material-icons">money</i>
                   <p>Exchange Rate</p>
                 </a>
@@ -81,7 +81,7 @@
           <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
               <div class="navbar-wrapper">
-                <a class="navbar-brand" href="">Exchange Rate</a>
+                <a class="navbar-brand" href="">Confirm Payment</a>
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -143,42 +143,46 @@
           </nav>
           <!-- End Navbar -->
           <div class="content">
-            <div class="container">
-                    <div class="row">
-                      <div class="col-md-12 col-sm-12 col-lg-10">
-                        <div class="card">
-                          <div class="card-header">
-                            <h4 class="card-title">Set New Exchange Rate</h4>
-                          </div>
-                          <div class="card-body">
-                            <form id="registerApp">
-                              <div class="row">
-
-                                <div class="col-md-12">
-                                  <div class="form-group has-label">
-                                    <label>Current Exchange Rate</label>
-                                    <input type="text" id="rate" name="rate" class="form-control" disabled required>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-sm-12 col-lg-8">
+                          <div class="card">
+                            <div class="card-header">
+                              <h4 class="card-title text-center mt-3">Upload Payment Receipt</h4>
+                            </div>
+                            <div class="card-body">
+                              <form id="confirm">
+                                <div class="row">
+  
+                                  <div class="col-md-12 text-center mt-2">
+                                    <i class="mdi mdi-cloud-upload-outline" style="font-size: 50px; color: #007bff;"></i>
                                   </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="form-group has-label">
-                                      <label>Enter new exchange rate</label>
-                                      <input type="tel" id="newRate" name="newRate" class="form-control" required>
+  
+                                  <div class="col-md-12 mt-3">
+                                        <div class="form-group form-file-upload form-file-simple">
+                                            <div class="input-group">
+                                                <input type="text"  class="form-control inputFileVisible" placeholder="Choose payment receipt">
+                                                <input type="file" multiple="" class="inputFileHidden imagePick" required>
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-fab btn-round">
+                                                        <i class="material-icons">attach_file</i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
-
-                                  <div class="container text-center"> 
-                                    <button type="submit" id="register" class="btn btn-primary text-center">Submit <span id="spinner"></span></button>   
-                                 </div>
-                              </div>
-                              
-                            </form>
+  
+                                    <div class="container text-center mt-2"> 
+                                      <button type="submit" id="upload" class="btn btn-primary text-center">Upload File <span id="spinner"></span></button>   
+                                   </div>
+                                </div>
+                                
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-            </div>
+                </div>
           </div>
           <footer class="footer">
             <div class="container-fluid">
@@ -255,76 +259,73 @@
      $(document).ready(function () {
 
         var view_data = new ViewData();
-        var token = view_data.getStoredUserDetail("token"); 
+        var token = view_data.getStoredUserDetail("token");
 
-          // Api request to the rate in naira
-          var view_data = new ViewData();
-          var send_function = "rate";
-          var token = view_data.getStoredUserDetail("token");
-            var rateUrl = view_data.ControllerRouteURL + send_function;
+         // to get the query string parameters from the url
+         var id;
+        var name;
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        parms.forEach(function(e) {
+            var keyValue = e.split("=");
+            var key = keyValue[0];
+            var value = keyValue[1];
+            if(key === 'id') {
+                // console.log(value);
+                id = value;
+            }
+            else if(key === 'name'){
+                // console.log(value);
+                name = value
+            }
+        });
 
-      $.ajax({
-                url: rateUrl,
-                type: "GET",
-                dataType: 'json',
-                data: false,
-                contentType: false,
-                      cache: false,
-                processData:false,
-                beforeSend : function(jqXHR, settings)
-                {
-				jqXHR.setRequestHeader('Authorization',token);
-                },
-                success: function(data)
-                {
+         console.log(id);
+         console.log(name);
 
-                  console.log(data)
-                  const textRate = data[0].rate
-				    $('#rate').val(textRate)
-				
-                },
-                complete: function(jqXHR){
-                  if(jqXHR.status == '401'){
-                        alert("Session expired, Kindly login again to continue");
-                        window.location.replace("admin_logout.html");
-                     }
-                  }
-          })
 
-        //   set exchange rate
-        $("#registerApp").validate({
+        // recent transactions table
+        var table = $('#myTable').DataTable({
+          "retrieve": true,
+          "language": {
+            "emptyTable": "No recent transactions made"
+              }
+        })
+
+        var files;
+         // upload application image logo
+         $('.imagePick').change(function(e){
+            files = e.target.files;
+            console.log(files)
+        })
+
+        $("#confirm").validate({
           submitHandler: function(form, event) {
             event.preventDefault()
-            var pattern = /^-?[0-9]+(.[0-9]{1-7})?$/;
-            var is_name=pattern.test($('#newRate').val());
-            if(is_name){
+             console.log(files)
 
-              var rate = $('#newRate').val();
-              var view_data = new ViewData();
-              var post_rate = "rate";
-              var postrateUrl = view_data.ControllerRouteURL + post_rate;
+             var view_data = new ViewData();
+              var confirm = "completepayment/" + id;
+              var postFileUrl = view_data.ControllerRouteURL + confirm
 
               var data = {
-                rate: rate
+                fiee: files,
               }
 
                 $.ajax({
-                url: postrateUrl,
+                url: postFileUrl,
                 type: 'POST',
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
                 beforeSend : function(jqXHR, settings)
                 {
-                jqXHR.setRequestHeader('Authorization',token);
-                $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
+                    jqXHR.setRequestHeader('Authorization',token);
+                    $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
                 },
                 success: function(data)
                 {
                  console.log(data)
-                 alert("Successfuly changed exchange rate")
-                 refreshRate()
-                 $('#newRate').val('')
                 },
                 complete: function(jqXHR){
                     if(jqXHR.status == '401'){
@@ -334,49 +335,18 @@
                     $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
                     }
                  })
-            }else{
-                alert("Invalid input")
-            }
           }
         })
 
 
-        function refreshRate() {
-            var view_data = new ViewData();
-          var send_function = "rate";
-          var token = view_data.getStoredUserDetail("token");
-            var rateUrl = view_data.ControllerRouteURL + send_function;
 
-            $.ajax({
-                        url: rateUrl,
-                        type: "GET",
-                        dataType: 'json',
-                        data: false,
-                        contentType: false,
-                            cache: false,
-                        processData:false,
-                        beforeSend : function(jqXHR, settings)
-                        {
-                        jqXHR.setRequestHeader('Authorization',token);
-                        },
-                        success: function(data)
-                        {
 
-                        console.log(data)
-                        const textRate = data[0].rate
-                            $('#rate').val(textRate)
-                        
-                        },
-                        complete: function(jqXHR){
-                        if(jqXHR.status == '401'){
-                                alert("Session expired, Kindly login again to continue");
-                                window.location.replace("admin_logout.html");
-                            }
-                        }
-                })
-            }
+
+         
 
     });
+
+  
 </script>
 </body>
 </html>

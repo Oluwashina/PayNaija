@@ -43,6 +43,12 @@
                   <p>Pending Payments</p>
                 </a>
               </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="received_payments.html">
+                  <i class="material-icons">emoji_people</i>
+                  <p>Received Payments</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="completed_payments.html">
                   <i class="material-icons">done</i>
@@ -307,11 +313,14 @@
                     for(i = 0;i < pendingPayment.length;i++)
                        {
                         var id = pendingPayment[i]['id'];
-                        var view_button = "viewTransaction('"+id+"')";
+                        var firstName = pendingPayment[i]['fName'];
+                        var lastName = pendingPayment[i]['lName'];
+                        var fullName = firstName + " " + lastName
+                        var view_button = "viewTransaction('"+id+"','"+firstName+"')";
                         var buttons = '<button class="mr-2 mb-2 btn btn-link" type="button" onClick='+view_button+'>View</button>';
                         table.row.add( [
                                   pendingPayment[i]['status'],
-                                  pendingPayment[i]['fName'],
+                                  fullName,
                                   pendingPayment[i]['dateCreated'].slice(0, 10),
                                   pendingPayment[i]['phoneNo'],
                                   pendingPayment[i]['amountNaira'],
@@ -329,8 +338,9 @@
 
     });
 
-    function viewTransaction(id){
-      alert(id)
+    function viewTransaction(id, firstName){
+      var filename="view_pendingpayments.html?id="+ id + "&name=" + firstName;
+        window.location.replace(filename);
     }
 </script>
 </body>
