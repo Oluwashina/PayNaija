@@ -50,6 +50,14 @@
               </div>
 
               <div class="form-group">
+                <label for="country">Country of residence</label>
+                <select class="form-control" id="country">
+
+                </select>
+              </div>
+
+
+              <div class="form-group">
                 <label for="phone">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" required>
               </div>
@@ -66,15 +74,21 @@
                   </div>
             </div>
 
-              <div class="form-group">
-                <label for="country">Country of residence</label>
-                <select class="form-control" id="country">
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <div class="input-group mb-2" id="show_confirm_password">
+                  <input type="password" class="form-control" id="confirmPassword">
+                  <div class="input-group-prepend">
+                      <div class="input-group-text">
+                          <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                </div>
+          </div>
 
-                </select>
-              </div>
-
+             
             
-            <button type="submit" class="btn btn-primary mt-2" style="width: 100%;" >Sign Up <span id="spinner"></span></button>
+            <button type="submit" class="btn btn-primary mt-2" style="width: 100%;" id="signUp" >Sign Up <span id="spinner"></span></button>
               
           </form>
 
@@ -187,6 +201,7 @@
                 dataType: 'json',
               beforeSend: function(jqXHR, settings) {
                   $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
+                  $('#signUp').attr('disabled', true)
               },
               success: function(data) {
                 console.log(data)
@@ -209,6 +224,7 @@
                     progressBar: false,
                     position: 'topRight'
                 });
+                $('#signUp').attr('disabled', false)
 
               },
               complete: function(jqXHR) {
@@ -216,6 +232,7 @@
                       var obj = $.parseJSON(jqXHR.responseText);
                   }
                   $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
+                  $('#signUp').attr('disabled', false)
               }
           })
          })

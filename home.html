@@ -45,8 +45,8 @@
 									</div>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">
-                                        <span class="count" id="notifications-count">5</span>
+									<a class="nav-link" href="notifications.html">
+                                        <span class="count" id="notifications-count"></span>
                                         <i class="mdi mdi-bell" style="font-size: 20px;"></i></a>
 								</li>
                                 
@@ -167,6 +167,7 @@
 
         var view_data = new ViewData();
         var fullName = view_data.getStoredUserDetail('fullName');
+        var token = view_data.getStoredUserDetail("token"); 
 
         $('#fullName').append(fullName)
         
@@ -184,6 +185,36 @@
         $('#send').on('click', function(){
             window.location.replace('transfer_amount.html')
         })
+
+         // Generic dashboard details
+		 var notification = "notification";
+          var notificationsUrl = view_data.ControllerRouteURL + notification;
+        $.ajax({
+                url: notificationsUrl,
+                type: "GET",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+                  jqXHR.setRequestHeader('Authorization',token);
+                },
+                success: function(data)
+                {
+                    console.log(data);
+                    var length = data.unReadLength
+                    $('#notifications-count').text(length)
+                   
+                },
+                complete: function(jqXHR){
+                      if(jqXHR.status == '401'){
+                        alert("Session expired, Kindly login again to continue");
+                        window.location.replace("logout.html");
+                          }
+                  } 
+          })
 
 
     })  

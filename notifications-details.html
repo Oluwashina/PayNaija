@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Naija - Notifications Details</title>
+    <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
+      <!-- Import Google font and icons -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+	  <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css">
+      <link href="style.css" rel="stylesheet">
+      <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation bar -->
+    <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="home.html"><img src="img/PayNaija.png" alt="logo" width="100" height="50" /></a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="home.html" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="transfer_amount.html">Transfer</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="contact.html">Contact</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" id="fullName">Hi, </a>
+                                    <div class="dropdown-menu">
+										<a class="dropdown-item" href="logout.html">Logout</a>
+									</div>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="notifications.html">
+									<span class="count" id="notifications-count"></span>
+									<i class="mdi mdi-bell" style="font-size: 18px;"></i></a>
+								</li>
+							</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+        </div>
+
+    </div>
+
+        <!-- main page design layout -->
+        <div class="container"  style="margin-top: 100px;">
+
+			<div class="row">
+
+				<!-- list of notifications -->
+				<div class="col-sm-12 col-lg-12">
+                    <h4 class="icon-color">Payment Completed</h4>
+                    <p>Thank you for choosing Pay Naija.</p>
+				</div>
+
+				<!-- notification description -->
+				<div class="col-sm-12 col-lg-6 mb-5">
+                    <p class="card-text mt-2 icon-color">Payment receipt</p>
+                    <img src="img/login.png" class="img-fluid" alt="...">			
+						
+				</div>
+			</div>
+			
+
+            
+        </div>
+
+
+			<!-- footer design -->
+			<footer style="padding-bottom: 20px;">
+
+			<div class="container pt-5">
+				<div class="row">
+					<div class="col-lg-4 col-sm-12">
+						<h6 style="color: white;">Our Information</h6>
+						<p style="color: white; font-size: 13px;" >7321 N Paulina St, Chicago, IL. 60626.</p>
+					</div>
+	
+					<div class="col-lg-4 col-sm-12">
+							<h6 style="color: white;">Our Correspondence</h6>
+							<p style="color: white; font-size: 13px;">+1 (312) 774-9047</p>
+					</div>
+					<div class="col-lg-4 col-sm-12">
+							<h6 style="color: white;">Connect with us.</h6>
+							<ul style="display: flex; list-style: none;">
+								<li><a href="#" style="color: white;"><i class="fab fa-twitter"></i></a></li>
+								<li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-facebook"></i></a></li>
+								<li style="margin-left: 20px;"><a href="#" style="color: white;"><i class="fab fa-instagram"></i></a></li>
+								<li style="margin-left: 20px;"><a href="mailto:seyiekundayo879@gmail.com" style="color: white;"><i class="mdi mdi-email"></i></a></li>
+							</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="container mt-3">
+				<p style="color: white; font-size: 14px;">&copy; PayNaija 2020. All rights reserved.</p>
+			</div>
+		</footer>
+    
+
+
+
+
+
+
+
+<script src="dist/jquery.min.js"></script>
+<script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+<script src="lib/viewdata.js"></script>
+<script src="lib/jquery.cookie.js"></script>
+<script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+    <!-- Forms Validations Plugin -->
+<script src="/assets/js/plugins/jquery.validate.min.js"></script>
+<script src="iziToast-master/dist/js/iziToast.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+		var view_data = new ViewData();
+        var fullName = view_data.getStoredUserDetail('fullName');
+        var token = view_data.getStoredUserDetail("token"); 
+
+        $('#fullName').append(fullName)
+
+        // to get the query string parameters from the url
+        var id;
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        parms.forEach(function(e) {
+            var keyValue = e.split("=");
+            var key = keyValue[0];
+            var value = keyValue[1];
+            if(key === 'id') {
+                // console.log(value);
+                id = value;
+            }
+        });
+
+         console.log(id);
+        
+        $('body').on('mouseenter mouseleave','.nav-item',function(e){
+			if ($(window).width() > 750) {
+				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+				setTimeout(function(){
+				_d[_d.is(':hover')?'addClass':'removeClass']('show');
+				},1);
+			}
+        });
+
+        // notifications count
+        var notification = "notification";
+          var notificationsUrl = view_data.ControllerRouteURL + notification;
+        $.ajax({
+                url: notificationsUrl,
+                type: "GET",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+                  jqXHR.setRequestHeader('Authorization',token);
+                },
+                success: function(data)
+                {
+                    console.log(data);
+                    var length = data.unReadLength
+                    $('#notifications-count').text(length)
+                   
+                },
+                complete: function(jqXHR){
+                      if(jqXHR.status == '401'){
+                        alert("Session expired, Kindly login again to continue");
+                        window.location.replace("logout.html");
+                          }
+                  } 
+          })
+        
+         // Generic dashboard details
+		 var dashboard = "notification/" + id;
+          var notificationsUrl = view_data.ControllerRouteURL + dashboard;
+        $.ajax({
+                url: notificationsUrl,
+                type: "GET",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+                  jqXHR.setRequestHeader('Authorization',token);
+                },
+                success: function(data)
+                {
+                    console.log(data);
+                   
+                },
+                complete: function(jqXHR){
+                      if(jqXHR.status == '401'){
+                        alert("Session expired, Kindly login again to continue");
+                        window.location.replace("logout.html");
+                          }
+                  } 
+          })
+
+
+
+    })  
+  </script> 
+</body>
+</html>

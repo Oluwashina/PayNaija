@@ -15,6 +15,7 @@
     
    <link href="/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
    <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="iziToast-master/dist/css/iziToast.min.css">
 </head>
 <body>
     <div class="wrapper ">
@@ -151,7 +152,7 @@
                               <h4 class="card-title text-center mt-3">Upload Payment Receipt</h4>
                             </div>
                             <div class="card-body">
-                              <form id="confirm">
+                              <form id="confirm" method="post" enctype="multipart/form-data">
                                 <div class="row">
   
                                   <div class="col-md-12 text-center mt-2">
@@ -162,7 +163,7 @@
                                         <div class="form-group form-file-upload form-file-simple">
                                             <div class="input-group">
                                                 <input type="text"  class="form-control inputFileVisible" placeholder="Choose payment receipt">
-                                                <input type="file" multiple="" class="inputFileHidden imagePick" required>
+                                                <input type="file" multiple="" accept="image/*" name="file" class="inputFileHidden imagePick" required>
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-fab btn-round">
                                                         <i class="material-icons">attach_file</i>
@@ -255,6 +256,7 @@
 <script src="lib/jquery.cookie.js"></script>
 <script src="lib/viewdata.js"></script>
 <script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+<script src="iziToast-master/dist/js/iziToast.min.js"></script>
 <script>
      $(document).ready(function () {
 
@@ -299,47 +301,46 @@
             console.log(files)
         })
 
-        $("#confirm").validate({
-          submitHandler: function(form, event) {
-            event.preventDefault()
-             console.log(files)
 
-             var view_data = new ViewData();
-              var confirm = "completepayment/" + id;
-              var postFileUrl = view_data.ControllerRouteURL + confirm
 
-              var data = {
-                fiee: files,
-              }
+        $("#confirm").submit(function(e) {
+                e.preventDefault();
+
+                var view_data = new ViewData();
+                var remote_function = "completepayment/"+ id;
+
+                var url = view_data.ControllerRouteURL + remote_function;
+
+                var token = view_data.getStoredUserDetail("token");
+
 
                 $.ajax({
-                url: postFileUrl,
-                type: 'POST',
-                data: JSON.stringify(data),
-                contentType: "application/json; charset=utf-8",
-                dataType: 'json',
-                beforeSend : function(jqXHR, settings)
-                {
-                    jqXHR.setRequestHeader('Authorization',token);
-                    $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
-                },
-                success: function(data)
-                {
-                 console.log(data)
-                },
-                complete: function(jqXHR){
-                    if(jqXHR.status == '401'){
+                    url: url,
+                    type: "POST",
+                    dataType: 'json',
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    beforeSend: function(jqXHR, settings) {
+                        jqXHR.setRequestHeader('Token', token);
+                    },
+                    success: function(data) {
+                          iziToast.success({
+                                message: 'Successful! Payment Received.',
+                                progressBar: false,
+                                position: 'topRight'
+                            });
+                    },
+                    complete: function(jqXHR) {
+                        if(jqXHR.status == '401'){
                             alert("Unable to complete request");
                             window.location.replace("admin_logout.html");
                         }
-                    $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
+                          $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
                     }
-                 })
-          }
-        })
-
-
-
+                });
+            });
 
 
          

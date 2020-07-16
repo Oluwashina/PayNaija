@@ -8,6 +8,13 @@ body{
 	font-family: 'Work Sans';
 }
 
+footer{
+	background: #333333; 
+	left: 0; 
+	width: 100%;
+	bottom: 0;
+}
+
 /* Navigation bar */
 .navigation-wrap{
 	position: fixed;
