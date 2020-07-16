@@ -122,9 +122,9 @@
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="material-icons">person</i>
+                      <i class="material-icons">settings</i>
                       <p class="d-lg-none d-md-block">
-                        Account
+                        Settings
                       </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
@@ -167,7 +167,7 @@
                                 <th>Date Initialized</th>
                                 <th>Phone Number</th>
                                 <th>Amount (&#8358;)</th>
-                                <th>-</th>
+                                <th class="text-center">-</th>
                               </thead>
                               <tbody>
                                
@@ -313,7 +313,7 @@
                         var lastName = completePayment[i]['lName'];
                         var fullName = firstName + " " + lastName
                         var view_button = "viewTransaction('"+id+"','"+firstName+"')";
-                        var buttons = '<button class="mr-2 mb-2 btn btn-link" type="button" onClick='+view_button+'>View</button>';
+                        var buttons = '<button class="mr-2 mb-2 btn btn-link" style="color: #047bf8; background-color: transparent; background-image: none; border-color: #047bf8;" type="button" onClick='+view_button+'>View</button>';
                         table.row.add( [
                                   completePayment[i]['status'],
                                   fullName,
