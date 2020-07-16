@@ -474,9 +474,17 @@
                        $('#confirm').removeClass('btn-primary').addClass('btn-secondary')
                     }
                     if(data.receipientDetails.status === "Completed"){
-                      $('#confirm').text('Payment Completed')
+                      $('#confirm').text('Payment Received')
                         $('#confirm').attr('disabled', true)
                        $('#confirm').removeClass('btn-primary').addClass('btn-secondary')
+
+                      $('#confirmPay').text('Payment Completed')
+                        $('#confirmPay').attr('disabled', true)
+                       $('#confirmPay').removeClass('btn-primary').addClass('btn-secondary')
+                    }
+                    if(data.receipientDetails.status === "Pending"){
+                        $('#confirmPay').attr('disabled', true)
+                        $('#confirmPay').removeClass('btn-primary').addClass('btn-secondary')
                     }
 
                   
@@ -516,7 +524,10 @@
 
                 $('#confirm').text('Payment Received')
                 $('#confirm').attr('disabled', true)
-				      	$('#confirm').removeClass('btn-primary').addClass('btn-secondary')
+                $('#confirm').removeClass('btn-primary').addClass('btn-secondary')
+                
+                $('#confirmPay').attr('disabled', false)
+                 $('#confirmPay').removeClass('btn-secondary').addClass('btn-primary')
 
               },
               error: function(data){

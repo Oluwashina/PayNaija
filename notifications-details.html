@@ -66,14 +66,20 @@
 
 				<!-- list of notifications -->
 				<div class="col-sm-12 col-lg-12">
-                    <h4 class="icon-color">Payment Completed</h4>
-                    <p>Thank you for choosing Pay Naija.</p>
+                    <h4 class="icon-color title">Payment </h4>
+                    <p class="message"></p>
 				</div>
 
 				<!-- notification description -->
-				<div class="col-sm-12 col-lg-6 mb-5">
+				<div class="col-sm-12 col-lg-6 mb-2">
                     <p class="card-text mt-2 icon-color">Payment receipt</p>
-                    <img src="img/login.png" class="img-fluid" alt="...">			
+
+                    <div class="imgSrc mb-4">
+                        <!-- <img src="img/login.png" class="img-fluid" alt="..."> -->
+                    </div>
+
+                    <p>Thanks for choosing Pay Naija.</p>
+                    			
 						
 				</div>
 			</div>
@@ -84,7 +90,7 @@
 
 
 			<!-- footer design -->
-			<footer style="padding-bottom: 20px;">
+			<!-- <footer style="padding-bottom: 20px;">
 
 			<div class="container pt-5">
 				<div class="row">
@@ -112,7 +118,7 @@
 			<div class="container mt-3">
 				<p style="color: white; font-size: 14px;">&copy; PayNaija 2020. All rights reserved.</p>
 			</div>
-		</footer>
+		</footer> -->
     
 
 
@@ -180,7 +186,6 @@
                 },
                 success: function(data)
                 {
-                    console.log(data);
                     var length = data.unReadLength
                     $('#notifications-count').text(length)
                    
@@ -211,7 +216,22 @@
                 success: function(data)
                 {
                     console.log(data);
-                   
+                    var notificationTitle = data.notification.title
+                    var notificationMsg = data.notification.message
+                    var imgUrl = data.imageUrl
+                    $('.title').append(notificationTitle)
+                    $('.message').text(notificationMsg)
+
+                    var image = "images/" + imgUrl;
+                     var imageUrl = view_data.ControllerRouteURL + image
+
+                     if(imgUrl !== ""){
+
+                        var imageCode =  `<img src=${imageUrl} class="img-fluid" alt="Payment Receipt">`
+
+                        $('.imgSrc').append(imageCode)
+                     }
+
                 },
                 complete: function(jqXHR){
                       if(jqXHR.status == '401'){

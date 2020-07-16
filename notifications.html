@@ -187,15 +187,15 @@
 						{
 							var id = notify[i]['id'];
 							var message = notify[i]['message'];
+							var title = notify[i]['title'];
 							var time = moment(notify[i]['dateCreated']).fromNow()
 							var view_button = "viewNotify('"+id+"')";
 							var notifications = `<a onclick=${view_button} class="list-group-item list-group-item-action flex-column align-items-start notify">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Payment Received</h5>
+								<h5 class="mb-1">Payment ${title}</h5>
 								<small>${time}</small>
 							</div>
 							<p class="mb-1">${message}</p>
-							<small>Donec id elit non mi porta.</small>
 								</a>`
 
 								$('.myNotifications').append(notifications);

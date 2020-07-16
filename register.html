@@ -57,9 +57,14 @@
               </div>
 
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="phone">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" required>
+              </div> -->
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-control">
               </div>
 
               <div class="form-group">
@@ -120,6 +125,7 @@
  <!-- Forms Validations Plugin -->
  <script src="/assets/js/plugins/jquery.validate.min.js"></script>
  <script src="iziToast-master/dist/js/iziToast.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"></script>
 
   <script>
     $(document).ready(function(){
@@ -136,6 +142,10 @@
             $('#show_hide_password i').addClass( "fa-eye" );
         }
     });
+
+
+    // show teelphone country codes
+    $("input").intlTelInput()
 
       
       // Api request to get all countries

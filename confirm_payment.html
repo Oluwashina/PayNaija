@@ -163,7 +163,7 @@
                                         <div class="form-group form-file-upload form-file-simple">
                                             <div class="input-group">
                                                 <input type="text"  class="form-control inputFileVisible" placeholder="Choose payment receipt">
-                                                <input type="file" multiple="" accept="image/*" name="file" class="inputFileHidden imagePick" required>
+                                                <input type="file" multiple="" accept="image/*" name="files" class="inputFileHidden imagePick" required>
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-fab btn-round">
                                                         <i class="material-icons">attach_file</i>
@@ -323,14 +323,24 @@
                     cache: false,
                     processData: false,
                     beforeSend: function(jqXHR, settings) {
-                        jqXHR.setRequestHeader('Token', token);
+                        jqXHR.setRequestHeader('Authorization', token);
+                        $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
                     },
                     success: function(data) {
+                      $('#spinner').removeClass("fa fa-circle-o-notch fa-spin"); 
                           iziToast.success({
-                                message: 'Successful! Payment Received.',
+                                message: 'Successful! Payment receipt uploaded',
                                 progressBar: false,
                                 position: 'topRight'
                             });
+                    },
+                    error: function(data){
+                        $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");  
+                        iziToast.error({
+                          message: 'Image already added!',
+                          progressBar: false,
+                          position: 'topRight'
+                      });
                     },
                     complete: function(jqXHR) {
                         if(jqXHR.status == '401'){

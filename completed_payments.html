@@ -316,7 +316,7 @@
                         var firstName = completePayment[i]['fName'];
                         var lastName = completePayment[i]['lName'];
                         var fullName = firstName + " " + lastName
-                        var view_button = "viewTransaction('"+id+"')";
+                        var view_button = "viewTransaction('"+id+"','"+firstName+"')";
                         var buttons = '<button class="mr-2 mb-2 btn btn-link" type="button" onClick='+view_button+'>View</button>';
                         table.row.add( [
                                   completePayment[i]['status'],
@@ -338,8 +338,9 @@
 
     });
 
-  function viewTransaction(id){
-      alert(id)
+    function viewTransaction(id, firstName){
+      var filename="view_pendingpayments.html?id="+ id + "&name=" + firstName;
+        window.location.replace(filename);
     }
 </script>
 </body>
