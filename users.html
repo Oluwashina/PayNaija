@@ -103,19 +103,15 @@
                     </a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="material-icons">notifications</i>
-                      <span class="notification">5</span>
+                      <span class="notification notificationCount"></span>
                       <p class="d-lg-none d-md-block">
                         Notifications
                       </p>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                      <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                      <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                      <a class="dropdown-item" href="#">Another Notification</a>
-                      <a class="dropdown-item" href="#">Another One</a>
+                    <div class="dropdown-menu dropdown-menu-right adminNotify" aria-labelledby="navbarDropdownMenuLink">
+                      
                     </div>
                   </li>
                   <li class="nav-item dropdown">
@@ -319,6 +315,44 @@
                           }
                   } 
           })
+
+           //  get all Notifications
+           var notification = "notification";
+          var notificationsUrl = view_data.ControllerRouteURL + notification;
+           $.ajax({
+                url: notificationsUrl,
+                type: "GET",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+                  jqXHR.setRequestHeader('Authorization',token);
+                },
+                success: function(data)
+                {
+                    console.log(data);
+                    var notify = data.allNotifications
+                    var length = data.unReadLength
+                    $('.notificationCount').text(length)
+                    for(i = 0; i < notify.length; i++){
+                         var message = notify[i].message
+                          var messageShow = `<a class="dropdown-item" href="#">${message}</a>`
+                          $('.adminNotify').append(messageShow)
+                          
+                        }
+             
+                },
+                complete: function(jqXHR){
+                      if(jqXHR.status == '401'){
+                        alert("Session expired, Kindly login again to continue");
+                        window.location.replace("admin_logout.html");
+                          }
+                  } 
+          })
+         
 
          
 

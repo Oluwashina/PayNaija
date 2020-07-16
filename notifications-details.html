@@ -44,10 +44,10 @@
 										<a class="dropdown-item" href="logout.html">Logout</a>
 									</div>
 								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link" href="notifications.html">
-									<span class="count" id="notifications-count"></span>
-									<i class="mdi mdi-bell" style="font-size: 18px;"></i></a>
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" style="cursor: pointer;" onclick="markRead()">
+                    <span class="count" id="notifications-count"></span>
+                    <i class="mdi mdi-bell" style="font-size: 20px;"></i></a>
 								</li>
 							</ul>
 						</div>
@@ -72,9 +72,8 @@
 
 				<!-- notification description -->
 				<div class="col-sm-12 col-lg-6 mb-2">
-                    <p class="card-text mt-2 icon-color">Payment receipt</p>
 
-                    <div class="imgSrc mb-4">
+                    <div class="imgSrc">
                         <!-- <img src="img/login.png" class="img-fluid" alt="..."> -->
                     </div>
 
@@ -222,14 +221,18 @@
                     $('.title').append(notificationTitle)
                     $('.message').text(notificationMsg)
 
-                    var image = "images/" + imgUrl;
-                     var imageUrl = view_data.ControllerRouteURL + image
+                    
 
                      if(imgUrl !== ""){
 
-                        var imageCode =  `<img src=${imageUrl} class="img-fluid" alt="Payment Receipt">`
-
+                      var image = "images/" + imgUrl;
+                        var imageUrl = view_data.ControllerRouteURL + image
+                        var imageCode =  `<p class="card-text mt-2 icon-color">Payment receipt</p>
+                                        <img src=${imageUrl} class="img-fluid mb-3" alt="Payment Receipt">`
                         $('.imgSrc').append(imageCode)
+                     }
+                     else{
+
                      }
 
                 },
@@ -240,10 +243,47 @@
                           }
                   } 
           })
-
-
-
     })  
+
+    function markRead(){
+        var view_data = new ViewData();
+        var token = view_data.getStoredUserDetail("token"); 
+
+        var count = parseInt($('#notifications-count').text())
+        console.log(count)
+
+        if(count === 0){
+            window.location.replace("notifications.html"); 
+        }else{
+            var read = "markread";
+            var readUrl = view_data.ControllerRouteURL + read;
+            $.ajax({
+                    url: readUrl,
+                    type: "POST",
+                    dataType: 'json',
+                    data: false,
+                    contentType: false,
+                        cache: false,
+                    processData:false,
+                    beforeSend : function(jqXHR, settings)
+                    {
+                    jqXHR.setRequestHeader('Authorization',token);
+                    },
+                    success: function(data)
+                    {
+                        console.log(data);
+                        window.location.replace("notifications.html");
+                    },
+                    complete: function(jqXHR){
+                        if(jqXHR.status == '401'){
+                            alert("Session expired, Kindly login again to continue");
+                            window.location.replace("logout.html");
+                            }
+                    } 
+            })
+        }
+         
+    }
   </script> 
 </body>
 </html>
