@@ -12,6 +12,7 @@
       <link href="style.css" rel="stylesheet">
       <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
       <link rel="stylesheet" href="iziToast-master/dist/css/iziToast.min.css">
+      <link rel="stylesheet" href="/assets/css/pidie.css">
 </head>
 <body>
 
@@ -56,16 +57,14 @@
                 </select>
               </div>
 
-
-              <!-- <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" required>
-              </div> -->
-
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" class="form-control">
+                <div class="pd-telephone-input" style="margin: 0px">
+                  <input type="tel" class="form-control" id="phone">
+                </div>
               </div>
+
+              
 
               <div class="form-group">
                 <label for="password">Password</label>
@@ -89,6 +88,7 @@
                       </div>
                     </div>
                 </div>
+                <span id="passwordField" class="error">Password doesn't match!!!</span>
           </div>
 
              
@@ -125,11 +125,16 @@
  <!-- Forms Validations Plugin -->
  <script src="/assets/js/plugins/jquery.validate.min.js"></script>
  <script src="iziToast-master/dist/js/iziToast.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"></script>
+ <script src="assets/js/pidie.js"></script>
 
   <script>
     $(document).ready(function(){
 
+      new Pidie();
+
+      
+
+      // password toggle
       $("#show_hide_password a").on('click', function(event) {
              event.preventDefault();
         if($('#show_hide_password input').attr("type") == "text"){
@@ -143,9 +148,21 @@
         }
     });
 
+    // confirm password toggle
+    $("#show_confirm_password a").on('click', function(event) {
+             event.preventDefault();
+        if($('#show_confirm_password input').attr("type") == "text"){
+            $('#show_confirm_password input').attr('type', 'password');
+            $('#show_confirm_password i').addClass( "fa-eye-slash" );
+            $('#show_confirm_password i').removeClass( "fa-eye" );
+        }else if($('#show_confirm_password input').attr("type") == "password"){
+            $('#show_confirm_password input').attr('type', 'text');
+            $('#show_confirm_password i').removeClass( "fa-eye-slash" );
+            $('#show_confirm_password i').addClass( "fa-eye" );
+        }
+    });
 
-    // show teelphone country codes
-    $("input").intlTelInput()
+
 
       
       // Api request to get all countries
@@ -179,7 +196,14 @@
                   	 }
                  }  
           })
-		
+
+
+          //validate amount
+              $('#confirmPassword').on('input', function() {
+                  var err_msg = $("#passwordField");
+                    err_msg.removeClass("error_show").addClass("error")
+                });
+
 
       // on form submit
         $("form").submit(function(event) {
@@ -193,16 +217,25 @@
           var country = $('select#country option:selected').val();
           var password = $("#password").val();
           var fullname = $('#fullname').val();
-         
+          var confirmPassword = $('#confirmPassword').val();
+          var error_msg = $('#passwordField');
 
-          var data = {
-            email: email,
-            fullName: fullname,
-            password: password,
-            country: country,
-            phoneNo: phone
+          if(password !== confirmPassword){
+            error_msg.removeClass("error").addClass("error_show")  
           }
+          else{
 
+            var data = {
+              email: email,
+              fullName: fullname,
+              password: password,
+              country: country,
+              phoneNo: phone
+            }
+
+            error_msg.removeClass("error_show").addClass("error")
+
+            
           $.ajax({
                 type: 'POST',
                 data: JSON.stringify(data),
@@ -245,7 +278,10 @@
                   $('#signUp').attr('disabled', false)
               }
           })
-         })
+
+          }
+
+        })
          
 
 

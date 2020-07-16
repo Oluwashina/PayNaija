@@ -45,7 +45,7 @@
 									</div>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="notifications.html">
+									<a class="nav-link" onclick="markRead()">
                                         <span class="count" id="notifications-count"></span>
                                         <i class="mdi mdi-bell" style="font-size: 20px;"></i></a>
 								</li>
@@ -215,9 +215,41 @@
                           }
                   } 
           })
-
-
+        
     })  
+
+    function markRead(){
+        alert("hello")
+        var view_data = new ViewData();
+        var token = view_data.getStoredUserDetail("token"); 
+
+         var read = "markread";
+          var readUrl = view_data.ControllerRouteURL + read;
+        $.ajax({
+                url: readUrl,
+                type: "POST",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+                  jqXHR.setRequestHeader('Authorization',token);
+                },
+                success: function(data)
+                {
+                    console.log(data);
+                    window.location.replace("notifications.html");
+                },
+                complete: function(jqXHR){
+                      if(jqXHR.status == '401'){
+                        alert("Session expired, Kindly login again to continue");
+                        window.location.replace("logout.html");
+                          }
+                  } 
+          })
+    }
   </script> 
 </body>
 </html>
