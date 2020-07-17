@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pending Payments - PayNaija</title>
+    <title>Completed Payments - PayNaija</title>
     <!-- favicon -->
     <link rel='icon' href='img/PayNaija.png' type='image/x-icon' sizes="16x16" />
     <!--Import Google Icon Font-->
@@ -15,6 +15,7 @@
     
    <link href="/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
    <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="iziToast-master/dist/css/iziToast.min.css">
 </head>
 <body>
     <div class="wrapper ">
@@ -37,8 +38,8 @@
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#" >
+              <li class="nav-item">
+                <a class="nav-link" href="pending_payments.html" >
                   <i class="material-icons">info_outline</i>
                   <p>Pending Payments</p>
                 </a>
@@ -81,7 +82,7 @@
           <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
               <div class="navbar-wrapper">
-                <a class="navbar-brand" href="">Pending Payments</a>
+                <a class="navbar-brand" href="">Completed Payment</a>
               </div>
               <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -100,7 +101,6 @@
                   </div>
                 </form>
                 <ul class="navbar-nav">
-
                   <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="material-icons">notifications</i>
@@ -132,57 +132,204 @@
           </nav>
           <!-- End Navbar -->
           <div class="content">
-            <div class="container">
-                <ul class="nav nav-pills nav-pills-primary" role="tablist">
-                  <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true">
-                        All Transactions
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#link3" role="tablist" aria-expanded="false">
-                         
-                      </a>
-                  </li>
-              </ul>
-              <div class="mt-3">
-              <div class="tab-content tab-space">
-                  <div class="tab-pane active" id="link1" aria-expanded="true">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card">
-                
-                          <div class="card-body table-responsive">
-                            <table class="table table-hover" id="myTable">
-                              <thead class="text-black">
-                                <th>Status</th>
-                                <th>Name</th>
-                                <th>Date Initialized</th>
-                                <th>Phone Number</th>
-                                <th>Amount (&#8358;)</th>
-                                <th>-</th>
-                              </thead>
-                              <tbody>
-                               
-                              </tbody>
-                            </table>
-                          </div>
+              <div class="container">
+
+                  <!-- payment details title -->
+                 <h4>Payment Details</h4>
+
+                 
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="card">
+                        <img src='' class="img-fluid card-img-top receipt" alt="Payment Receipt">
+                        <div class="card-body">
+                            <p class="card-text">Payment Receipt.</p>
+                            <a id="Update" class="card-link" style="cursor: pointer; color: #047bf8;">Update Receipt</a>
+                         </div>
+                    </div>
+
+                </div>
+  
+                <!-- recipient's details -->
+                <div class="col-sm-12 col-lg-6">
+
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Recipient's Details</h4>
+                    </div>
+                    <div class="card-body">
+                       <!-- name -->
+                       <div class="row">
+                        <div class="col-3">
+                          <p>Name:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientName"></p>
                         </div>
                       </div>
+                      <!-- country -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Country:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientCountry"></p>
+                        </div>
+                      </div>
+  
+                      <!-- state -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>State:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientState"></p>
+                        </div>
+                      </div>
+  
+                      <!-- address -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Address:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAddress"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Zip code -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Zip Code:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientZip"></p>
+                        </div>
+                      </div>
+  
+                       <!-- phone no -->
+                        <div class="row">
+                        <div class="col-3">
+                          <p>Phone No:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientPhone"></p>
+                        </div>
+                      </div>
+   
+                      <!-- email -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Email:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientEmail"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Bank name -->
+                        <div class="row">
+                        <div class="col-3">
+                          <p>Bank Name:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientBank"></p>
+                        </div>
+                      </div>
+   
+                      <!-- Account Number -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Account No:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAccount"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Amount in dollars -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Amount ($):</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAmountDollar"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Amount in naira -->
+                       <div class="row">
+                        <div class="col-3">
+                          <p>Amount (&#8358;):</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAmountNaira" ></p>
+                        </div>
+                      </div>        
                      
                     </div>
                   </div>
-                  <!-- second tab -->
-                  <div class="tab-pane" id="link3" aria-expanded="false">
-                    <div class="row">
-                      <div class="col-md-12">
-                        
+                  
+                </div>
+              </div>
+
+              <!-- sender's details -->
+              <div class="row">
+                  <div class="col-sm-12 col-lg-6">
+
+                        <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title">Sender's Details</h4>
+                        </div>
+                        <div class="card-body">
+                          <!-- name --> 
+                          <div class="row">
+                            <div class="col-3">
+                              <p>Name:</p>
+                            </div>
+                            <div class="col-9">
+                              <p class="card-text senderName">7321 N Paulina St, Chicago, IL. 60626</p>
+                            </div>
+                          </div>
+                          <!-- country -->
+                          <div class="row">
+                            <div class="col-3">
+                              <p>Country:</p>
+                            </div>
+                            <div class="col-9">
+                              <p class="card-text senderCountry">Nigeria</p>
+                            </div>
+                          </div>
+      
+                          <!-- email -->
+                          <div class="row">
+                            <div class="col-3">
+                              <p>Email:</p>
+                            </div>
+                            <div class="col-9">
+                              <p class="card-text senderEmail">ronoka@gmail.com</p>
+                            </div>
+                          </div>
+      
+                          <!-- phone no -->
+                          <div class="row">
+                            <div class="col-3">
+                              <p>Phone No:</p>
+                            </div>
+                            <div class="col-9">
+                              <p class="card-text senderPhone">08121225455</p>
+                            </div>
+                          </div>
+                                              
+                        </div>
                       </div>
+
                   </div>
               </div>
+
               </div>
-              </div>
-              </div>
+              
+
           </div>
           <footer class="footer">
             <div class="container-fluid">
@@ -255,78 +402,38 @@
 <script src="lib/jquery.cookie.js"></script>
 <script src="lib/viewdata.js"></script>
 <script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+<script src="iziToast-master/dist/js/iziToast.min.js"></script>
 <script>
      $(document).ready(function () {
 
         var view_data = new ViewData();
         var token = view_data.getStoredUserDetail("token"); 
 
-        var today = new Date();
 
-      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-      console.log(date)
+        // to get the query string parameters from the url
+        var id;
+        var name;
+        var query = window.location.search.substring(1);
+        var parms = query.split('&');
+        parms.forEach(function(e) {
+            var keyValue = e.split("=");
+            var key = keyValue[0];
+            var value = keyValue[1];
+            if(key === 'id') {
+                // console.log(value);
+                id = value;
+            }
+            else if(key === 'name'){
+                // console.log(value);
+                name = value
+            }
+        });
 
-      $('.tableDate').text(date)
+         console.log(id);
+         console.log(name);
 
-
-        // recent transactions table
-        var table = $('#myTable').DataTable({
-          "retrieve": true,
-          "language": {
-            "emptyTable": "No recent transactions made"
-              }
-        })
-
-
-          // Generic dashboard details
-          var dashboard = "allpayment";
-          var dashboardUrl = view_data.ControllerRouteURL + dashboard;
-        $.ajax({
-                url: dashboardUrl,
-                type: "GET",
-                dataType: 'json',
-                data: false,
-                contentType: false,
-                      cache: false,
-                processData:false,
-                beforeSend : function(jqXHR, settings)
-                {
-                  jqXHR.setRequestHeader('Authorization',token);
-                },
-                success: function(data)
-                {
-                    console.log(data);
-                   
-                    // pending payments display
-                    var pendingPayment = data.pendingPayment
-                    for(i = 0;i < pendingPayment.length;i++)
-                       {
-                        var id = pendingPayment[i]['id'];
-                        var firstName = pendingPayment[i]['fName'];
-                        var lastName = pendingPayment[i]['lName'];
-                        var fullName = firstName + " " + lastName
-                        var view_button = "viewTransaction('"+id+"','"+firstName+"')";
-                        var buttons = '<button class="mr-2 mb-2 btn btn-link" style="color: #047bf8; background-color: transparent; background-image: none; border-color: #047bf8;" type="button" onClick='+view_button+'>View</button>';
-                        table.row.add( [
-                                  pendingPayment[i]['status'],
-                                  fullName,
-                                  pendingPayment[i]['dateCreated'].slice(0, 10),
-                                  pendingPayment[i]['phoneNo'],
-                                  pendingPayment[i]['amountNaira'],
-                                  buttons
-                                ] ).draw( false );
-                       }
-                },
-                complete: function(jqXHR){
-                      if(jqXHR.status == '401'){
-                        alert("Session expired, Kindly login again to continue");
-                        window.location.replace("admin_logout.html");
-                          }
-                  } 
-          })
-
-           //  get all Notifications
-           var notification = "notification";
+         //  get all Notifications
+         var notification = "notification";
           var notificationsUrl = view_data.ControllerRouteURL + notification;
            $.ajax({
                 url: notificationsUrl,
@@ -362,14 +469,71 @@
                   } 
           })
 
-        
 
+          // Payment details
+          var dashboard = "payment/" + id;
+          var dashboardUrl = view_data.ControllerRouteURL + dashboard;
+        $.ajax({
+                url: dashboardUrl,
+                type: "GET",
+                dataType: 'json',
+                data: false,
+                contentType: false,
+                      cache: false,
+                processData:false,
+                beforeSend : function(jqXHR, settings)
+                {
+                  jqXHR.setRequestHeader('Authorization',token);
+                },
+                success: function(data)
+                {
+                    console.log(data);
+                    // sender details fill
+                    $('.senderName').text(data.senderDetails.fullName)
+                    $('.senderCountry').text(data.senderDetails.country)
+                    $('.senderEmail').text(data.senderDetails.email)
+                    $('.senderPhone').text(data.senderDetails.senderPhone)
+
+                    // reciepients details fill
+                    var fullName = data.receipientDetails.fName + " " + data.receipientDetails.lName + " " + data.receipientDetails.mName
+                    $('.recipientName').text(fullName)
+                    $('.recipientCountry').text(data.receipientDetails.country)
+                    $('.recipientState').text(data.receipientDetails.state)
+                    $('.recipientAddress').text(data.receipientDetails.address)
+                    $('.recipientZip').text(data.receipientDetails.stateZipCode)
+                    $('.recipientPhone').text(data.receipientDetails.phoneNo)
+                    $('.recipientEmail').text(data.receipientDetails.email)
+                    $('.recipientBank').text(data.receipientDetails.bankName)
+                    $('.recipientAccount').text(data.receipientDetails.accountNumber)
+                    $('.recipientAmountDollar').append(data.receipientDetails.amountDollar)
+                    $('.recipientAmountNaira').append(data.receipientDetails.amountNaira)
+
+                         var image = "images/" + data.receipientDetails.imageUrl;
+                        var imageUrl = view_data.ControllerRouteURL + image
+
+                        $('.receipt').attr("src", `${imageUrl}`);
+
+                   
+                },
+                complete: function(jqXHR){
+                      if(jqXHR.status == '401'){
+                        alert("Session expired, Kindly login again to continue");
+                        window.location.replace("admin_logout.html");
+                          }
+                  } 
+          })
+
+
+        //   Update Payment Receipt
+        $('#Update').click(function(){
+            var filename="update_paymentreceipt.html?id="+ id + "&name=" + name;
+           window.location.replace(filename);
+        })
+
+       
+          
     });
 
-    function viewTransaction(id, firstName){
-      var filename="view_pendingpayments.html?id="+ id + "&name=" + firstName;
-        window.location.replace(filename);
-    }
 </script>
 </body>
 </html>

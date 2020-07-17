@@ -101,14 +101,6 @@
                   </div>
                 </form>
                 <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html">
-                      <i class="material-icons">dashboard</i>
-                      <p class="d-lg-none d-md-block">
-                        Stats
-                      </p>
-                    </a>
-                  </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="material-icons">notifications</i>
@@ -140,189 +132,195 @@
           </nav>
           <!-- End Navbar -->
           <div class="content">
-            <div class="row">
-              <div class="col-lg-6 col-sm-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4 class="card-title">Sender's Details</h4>
+
+            <div class="container">
+
+              <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Sender's Details</h4>
+                    </div>
+                    <div class="card-body">
+                      <!-- name -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Name:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text senderName">7321 N Paulina St, Chicago, IL. 60626</p>
+                        </div>
+                      </div>
+                      <!-- country -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Country:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text senderCountry">Nigeria</p>
+                        </div>
+                      </div>
+  
+                      <!-- email -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Email:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text senderEmail">ronoka@gmail.com</p>
+                        </div>
+                      </div>
+  
+                      <!-- phone no -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Phone No:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text senderPhone">08121225455</p>
+                        </div>
+                      </div>
+  
+                      <!-- confirm payment recieved -->
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3" id="confirm">Confirm Payment Received  <span id="spinner"></span></button>
+                      </div>
+                                          
+                    </div>
                   </div>
-                  <div class="card-body">
-                    <!-- name -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Name:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text senderName">7321 N Paulina St, Chicago, IL. 60626</p>
-                      </div>
+                </div>
+  
+                <!-- recipient's details -->
+                <div class="col-sm-12 col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Recipient's Details</h4>
                     </div>
-                    <!-- country -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Country:</p>
+                    <div class="card-body">
+                       <!-- name -->
+                       <div class="row">
+                        <div class="col-3">
+                          <p>Name:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientName"></p>
+                        </div>
                       </div>
-                      <div class="col-9">
-                        <p class="card-text senderCountry">Nigeria</p>
+                      <!-- country -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Country:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientCountry"></p>
+                        </div>
                       </div>
+  
+                      <!-- state -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>State:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientState"></p>
+                        </div>
+                      </div>
+  
+                      <!-- address -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Address:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAddress"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Zip code -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Zip Code:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientZip"></p>
+                        </div>
+                      </div>
+  
+                       <!-- phone no -->
+                       <div class="row">
+                        <div class="col-3">
+                          <p>Phone No:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientPhone"></p>
+                        </div>
+                      </div>
+  
+                      <!-- email -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Email:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientEmail"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Bank name -->
+                       <div class="row">
+                        <div class="col-3">
+                          <p>Bank Name:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientBank"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Account Number -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Account No:</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAccount"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Amount in dollars -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Amount ($):</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAmountDollar"></p>
+                        </div>
+                      </div>
+  
+                      <!-- Amount in naira -->
+                      <div class="row">
+                        <div class="col-3">
+                          <p>Amount (&#8358;):</p>
+                        </div>
+                        <div class="col-9">
+                          <p class="card-text recipientAmountNaira" ></p>
+                        </div>
+                      </div>
+  
+                       <!-- confirm payment sent -->
+                       <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3" id="confirmPay">Confirm Payment Sent</button>
+                      </div>
+                      
+                      
+  
+                     
                     </div>
-
-                    <!-- email -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Email:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text senderEmail">ronoka@gmail.com</p>
-                      </div>
-                    </div>
-
-                    <!-- phone no -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Phone No:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text senderPhone">08121225455</p>
-                      </div>
-                    </div>
-
-                    <!-- confirm payment recieved -->
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary mt-3" id="confirm">Confirm Payment Received  <span id="spinner"></span></button>
-                    </div>
-                                        
                   </div>
                 </div>
               </div>
 
-              <!-- recipient's details -->
-              <div class="col-sm-12 col-lg-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h4 class="card-title">Recipient's Details</h4>
-                  </div>
-                  <div class="card-body">
-                     <!-- name -->
-                     <div class="row">
-                      <div class="col-3">
-                        <p>Name:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientName"></p>
-                      </div>
-                    </div>
-                    <!-- country -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Country:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientCountry"></p>
-                      </div>
-                    </div>
-
-                    <!-- state -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>State:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientState"></p>
-                      </div>
-                    </div>
-
-                    <!-- address -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Address:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientAddress"></p>
-                      </div>
-                    </div>
-
-                    <!-- Zip code -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Zip Code:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientZip"></p>
-                      </div>
-                    </div>
-
-                     <!-- phone no -->
-                     <div class="row">
-                      <div class="col-3">
-                        <p>Phone No:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientPhone"></p>
-                      </div>
-                    </div>
-
-                    <!-- email -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Email:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientEmail"></p>
-                      </div>
-                    </div>
-
-                    <!-- Bank name -->
-                     <div class="row">
-                      <div class="col-3">
-                        <p>Bank Name:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientBank"></p>
-                      </div>
-                    </div>
-
-                    <!-- Account Number -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Account No:</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientAccount"></p>
-                      </div>
-                    </div>
-
-                    <!-- Amount in dollars -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Amount ($):</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientAmountDollar"></p>
-                      </div>
-                    </div>
-
-                    <!-- Amount in naira -->
-                    <div class="row">
-                      <div class="col-3">
-                        <p>Amount (&#8358;):</p>
-                      </div>
-                      <div class="col-9">
-                        <p class="card-text recipientAmountNaira" ></p>
-                      </div>
-                    </div>
-
-                     <!-- confirm payment sent -->
-                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary mt-3" id="confirmPay">Confirm Payment Sent</button>
-                    </div>
-                    
-                    
-
-                   
-                  </div>
-                </div>
-              </div>
             </div>
+            
           </div>
           <footer class="footer">
             <div class="container-fluid">
