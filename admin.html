@@ -50,7 +50,7 @@
                                       </div>
                                 </div>
                               
-                              <button type="submit" class="btn btn-primary mt-2" style="width: 100%;" >Sign In <span id="spinner"></span></button>
+                              <button type="submit" class="btn btn-primary mt-2" style="width: 100%;" id="signIn" >Sign In <span id="spinner"></span></button>
               
                               <div class="text-right" style="margin-top: 10px;">
                                 <a href="admin_changepassword.html" style="text-decoration: none;" class="icon-color">Change password?</a>
@@ -125,6 +125,7 @@
                 dataType: 'json',
             beforeSend: function(jqXHR, settings) {
                 $('#spinner').addClass("fa fa-circle-o-notch fa-spin");
+                $('#signIn').attr('disabled', true)
             },
             success: function(data) {
                console.log(data)
@@ -138,6 +139,7 @@
                         progress: true,
                     });
                 $('.flash-message').text('Invalid Credentials')
+                $('#signIn').attr('disabled', false)
                 
             },
             complete: function(jqXHR) {
@@ -145,6 +147,7 @@
                     var obj = $.parseJSON(jqXHR.responseText);
                 }
                 $('#spinner').removeClass("fa fa-circle-o-notch fa-spin");
+                $('#signIn').attr('disabled', false)
             }
         });
 

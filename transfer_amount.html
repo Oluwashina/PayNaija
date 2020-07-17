@@ -30,26 +30,27 @@
 						
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0">
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="home.html" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link" href="#">Transfer</a>
+									<a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="transfer_amount.html">Transfer</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="contact.html">Contact</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" id="fullName">Hi, </a>
-                                    <div class="dropdown-menu">
-										<a class="dropdown-item" href="logout.html">Logout</a>
-									</div>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" style="cursor: pointer;" onclick="markRead()">
                                         <span class="count" id="notifications-count"></span>
                                         <i class="mdi mdi-bell" style="font-size: 20px;"></i></a>
-								</li>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" id="fullName">Hi, </a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="logout.html">Logout</a>
+                                </li>
+                                
 							</ul>
 						</div>
 						
@@ -84,7 +85,7 @@
                     </div>
                     
                     <!-- conversion rate -->
-                    <p class="text-center icon-color">Our conversion rate = <span class="rate">288</span> Naira.</p>
+                    <p class="text-center icon-color">Our conversion rate = <span class="rate">380</span> Naira.</p>
 
                     <!-- corresponding amount -->
                     <div class="form-group mt-4">
@@ -249,11 +250,12 @@
 				var is_name = input.val();
                 var pattern = /^-?[0-9]+(.[0-9]{1-7})?$/;
 				var is_name=pattern.test(input.val());
-				var error_element = $("#sendField");
+                var error_element = $("#sendField");
+                  console.log($('#send').val())
                 if(is_name){
 					error_element.removeClass("error_show").addClass("error");
-					var rate = parseInt($('.rate').text());
-					var send = parseInt($('#send').val());
+                    var rate = parseInt($('.rate').text())
+                    var send = parseInt($('#send').val());
 					var answer = send * rate
 					$('#transfer').val(answer.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
 					$('#continue').attr('disabled', false)
@@ -275,10 +277,10 @@
 				var error_element = $("#transferField");
                 if(is_name){
 					error_element.removeClass("error_show").addClass("error");
-					var rate = parseInt($('.rate').text());
+                    var rate = parseInt($('.rate').text());
 					var send = parseInt($('#transfer').val());
 					var answer = send / rate
-					$('#send').val(answer.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+					$('#send').val(answer.toFixed(2))
 					$('#continue').attr('disabled', false)
 					$('#continue').removeClass('btn-secondary').addClass('btn-primary')
 				}else{
