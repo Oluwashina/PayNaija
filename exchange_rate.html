@@ -15,6 +15,7 @@
     
    <link href="/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
    <link href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="iziToast-master/dist/css/iziToast.min.css">
 </head>
 <body>
     <div class="wrapper ">
@@ -239,6 +240,7 @@
 <script src="lib/jquery.cookie.js"></script>
 <script src="lib/viewdata.js"></script>
 <script src="https://kit.fontawesome.com/d54c227c34.js"></script>
+<script src="iziToast-master/dist/js/iziToast.min.js"></script>
 <script>
      $(document).ready(function () {
 
@@ -309,8 +311,14 @@
                 },
                 success: function(data)
                 {
+
                  console.log(data)
-                 alert("Successfuly changed exchange rate")
+                 iziToast.success({
+                    message: 'Successfuly changed exchange rate.',
+                    progressBar: false,
+                    position: 'topRight'
+                });
+
                  refreshRate()
                  $('#newRate').val('')
                 },
@@ -323,7 +331,13 @@
                     }
                  })
             }else{
-                alert("Invalid input")
+                
+              iziToast.error({
+                    message: 'Invalid Input',
+                    progressBar: false,
+                    position: 'topRight'
+                });
+                
             }
           }
         })
