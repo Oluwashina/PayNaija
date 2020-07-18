@@ -102,7 +102,7 @@
                 </form>
                 <ul class="navbar-nav">
                   <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" onclick="markRead()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="material-icons">notifications</i>
                       <span class="notification notificationCount"></span>
                       <p class="d-lg-none d-md-block">
@@ -371,7 +371,7 @@
             });
 
                 //  get all Notifications
-          var notification = "notification";
+                var notification = "notification";
           var notificationsUrl = view_data.ControllerRouteURL + notification;
            $.ajax({
                 url: notificationsUrl,
@@ -390,13 +390,31 @@
                     console.log(data);
                     var notify = data.allNotifications
                     var length = data.unReadLength
-                    $('.notificationCount').text(length)
-                    for(i = 0; i < notify.length; i++){
-                         var message = notify[i].message
-                          var messageShow = `<a class="dropdown-item" href="#">${message}</a>`
-                          $('.adminNotify').append(messageShow)
-                          
-                        }
+                    if(notify.length === 0){
+                      $('.notificationCount').removeClass('notification')
+                      $('.notificationCount').text('')
+                      const text = `<a class="dropdown-item">You do not have any notifications!!!</a>`
+                       $('.adminNotify').append(text)
+                    }
+                    else if(length === 0){
+                      $('.notificationCount').removeClass('notification')
+                      $('.notificationCount').text('')
+                      for(i = 0; i < notify.length; i++){
+                          var message = notify[i].message
+                            var messageShow = `<a class="dropdown-item" href="#">${message}</a>`
+                            $('.adminNotify').append(messageShow)
+                            
+                          }
+                    }
+                    else{
+                       $('.notificationCount').text(length)
+                      for(i = 0; i < notify.length; i++){
+                          var message = notify[i].message
+                            var messageShow = `<a class="dropdown-item" href="#">${message}</a>`
+                            $('.adminNotify').append(messageShow)
+                            
+                          }
+                    }
              
                 },
                 complete: function(jqXHR){
@@ -406,6 +424,7 @@
                           }
                   } 
           })
+
 
 
          
