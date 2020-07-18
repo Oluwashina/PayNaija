@@ -321,7 +321,7 @@
 
                 $.ajax({
                     url: url,
-                    type: "POST",
+                    type: "PUT",
                     dataType: 'json',
                     data: new FormData(this),
                     contentType: false,
@@ -334,7 +334,7 @@
                     success: function(data) {
                       $('#spinner').removeClass("fa fa-circle-o-notch fa-spin"); 
                           iziToast.success({
-                                message: 'Successful! Payment receipt uploaded',
+                                message: 'Successful! Payment receipt updated',
                                 progressBar: false,
                                 position: 'topRight'
                             });

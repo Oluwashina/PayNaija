@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0">
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+									<a class="nav-link" href="home.html" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="transfer_amount.html">Transfer</a>
@@ -218,13 +218,13 @@
                     console.log(data);
                     var notificationTitle = data.notification.title
                     var notificationMsg = data.notification.message
-                    var imgUrl = data.imageUrl
+                    var imgUrl = data.notification.imageUrl
                     $('.title').append(notificationTitle)
                     $('.message').text(notificationMsg)
 
                     
 
-                     if(imgUrl !== " "){
+                     if(imgUrl != null){
 
                       var image = "images/" + imgUrl;
                         var imageUrl = view_data.ControllerRouteURL + image
