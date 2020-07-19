@@ -513,10 +513,11 @@
                     $('.recipientAmountDollar').append(data.receipientDetails.amountDollar)
                     $('.recipientAmountNaira').append(data.receipientDetails.amountNaira)
 
-                         var image = "images/" + data.receipientDetails.imageUrl;
-                        var imageUrl = view_data.ControllerRouteURL + image
+                        // change the url to the cloudinary url
+                         var image = data.receipientDetails.imageUrl;
+                        // var imageUrl = view_data.ControllerRouteURL + image
 
-                        $('.receipt').attr("src", `${imageUrl}`);
+                        $('.receipt').attr("src", `${image}`);
 
                    
                 },

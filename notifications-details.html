@@ -226,10 +226,10 @@
 
                      if(imgUrl != null){
 
-                      var image = "images/" + imgUrl;
-                        var imageUrl = view_data.ControllerRouteURL + image
+                      var image = imgUrl;
+                        // var imageUrl = view_data.ControllerRouteURL + image
                         var imageCode =  `<p class="card-text mt-2 icon-color">Payment receipt</p>
-                                        <img src=${imageUrl} class="img-fluid mb-3" alt="Payment Receipt">`
+                                        <img src=${image} class="img-fluid mb-3" alt="Payment Receipt">`
                         $('.imgSrc').append(imageCode)
                      }
                      else{
