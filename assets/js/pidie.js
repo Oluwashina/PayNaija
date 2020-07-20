@@ -49,7 +49,6 @@ class Pidie {
         { id: 'BI', name: 'Burundi', currency_code: 'BIF', currency_name: 'Franc', phone: '+257', language_code: 'fr', language_name: 'Français', demonym: 'Burundian' }, 
         { id: 'KH', name: 'Cambodia', currency_code: 'KHR', currency_name: 'Riel', phone: '+855', language_code: 'km', language_name: 'ភាសាខ្មែរ', demonym: 'Cambodian' }, 
         { id: 'CM', name: 'Cameroon', currency_code: 'XAF', currency_name: 'Central African Franc', phone: '+237', language_code: 'fr', language_name: 'Français', demonym: 'Cameroonian' }, 
-        { id: 'CA', name: 'Canada', currency_code: 'CAD', currency_name: 'Dollar', phone: '+1', language_code: 'en', language_name: 'English', demonym: 'Canadian' }, 
         { id: 'CV', name: 'Cape Verde', currency_code: 'CVE', currency_name: 'Escudo', phone: '+238', language_code: 'pt', language_name: 'Português', demonym: 'Cape Verdean' }, 
         { id: 'CF', name: 'Central African Republic', currency_code: 'XAF', currency_name: 'Franc', phone: '+236', language_code: 'fr', language_name: 'Français', demonym: 'Central African' }, 
         { id: 'TD', name: 'Chad', currency_code: 'XAF', currency_name: 'Central African Franc', phone: '+235', language_code: 'fr', language_name: 'Français', demonym: 'Chadian' }, 
@@ -122,6 +121,8 @@ class Pidie {
         { id: 'LT', name: 'Lithuania', currency_code: 'EUR', currency_name: 'Euro', phone: '+370', language_code: 'lt', language_name: 'Lietuvių kalba', demonym: 'Lithuanian' },
         { id: 'LU', name: 'Luxembourg', currency_code: 'EUR', currency_name: 'Euro', phone: '+352', language_code: 'lb', language_name: 'Lëtzebuergesch', demonym: 'Luxembourg' },
         { id: 'NG', name: 'Nigeria', currency_code: 'NGN', currency_name: 'Naira', phone: '+234', language_code: 'en', language_name: 'English', demonym: 'English' },
+        { id: 'US', name: 'USA', currency_code: 'USD', currency_name: 'Dollar', phone: '+1', language_code: 'en', language_name: 'English', demonym: 'English' }, 
+
         /*{ id: '', name: '', currency_code: '', currency_name: '', phone: '', language_code: '', language_name: '', demonym: '' }*/
       ];
     }

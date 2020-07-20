@@ -2862,20 +2862,20 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #ffffff;
-  background-color: #2196f3;
-  border-color: #2196f3;
+  background-color: #48C074;
+  border-color: #48C074;
   box-shadow: none;
 }
 
 .btn-primary:hover {
   color: #ffffff;
-  background-color: #0c83e2;
-  border-color: #0c7cd5;
+  background-color: #48C074;
+  border-color: #48C074;
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
-  box-shadow: none, 0 0 0 0.2rem rgba(33, 150, 243, 0.5);
+  box-shadow: none;
 }
 
 .btn-primary.disabled,
@@ -9464,7 +9464,7 @@ a.text-dark:focus {
 
 .btn.btn-primary {
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #48C074;
   
 }
 
@@ -10113,8 +10113,8 @@ a.text-dark:focus {
 .btn.btn-default.focus,
 .btn.btn-default:hover {
   color: #fff;
-  background-color: #919191;
-  border-color: #7a7a7a;
+  background-color: #48C074;
+  border-color: #48C074;
 }
 
 .btn:active,
@@ -16526,8 +16526,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .fixed-plugin .btn:hover,
 .fixed-plugin .btn.btn-default:hover {
   color: #fff;
-  background-color: #919191;
-  border-color: #7a7a7a;
+  background-color: #48C074;
+  border-color: #48C074;
 }
 
 .fixed-plugin .btn:focus,
@@ -16537,8 +16537,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .fixed-plugin .btn.btn-default.focus,
 .fixed-plugin .btn.btn-default:hover {
   color: #fff;
-  background-color: #919191;
-  border-color: #7a7a7a;
+  background-color: #48C074;
+  border-color: #48C074;
 }
 
 .fixed-plugin .btn:active,
