@@ -135,6 +135,7 @@
                           <div class="card-body table-responsive">
                             <table class="table table-hover" id="myTable">
                               <thead class="text-black">
+                                <th>Id</th>
                                 <th>Full Name</th>
                                 <th>Phone Number</th>
                                 <th>Email Address</th>
@@ -280,6 +281,7 @@
                     for(i = 0;i < users.length;i++)
                        {
                         table.row.add( [
+                                  users[i]['code'],
                                   users[i]['fullName'],
                                   users[i]['phoneNo'],
                                   users[i]['email'],
